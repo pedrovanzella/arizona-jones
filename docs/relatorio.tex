@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{algorithm2e}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newenvironment{lyxlist}[1]
+{\begin{list}{}
+{\settowidth{\labelwidth}{#1}
+ \setlength{\leftmargin}{\labelwidth}
+ \addtolength{\leftmargin}{\labelsep}
+ \renewcommand{\makelabel}[1]{##1\hfil}}}
+{\end{list}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{sbc-template}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+
+\sloppy
+
+\title{Arizona Jones}
+
+\author{Pedro Vanzella\inst{1}}
+
+\address{Faculdade de Informática -- Pontifícia Universidade Católica do Rio
+Grande do Sul (PUCRS) \\ Av. Ipiranga, 6681 - Porto Alegre / RS / Brasil
+    \email pedro@pedrovanzella.com}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\lstset {
+    mathescape,
+    frame=none
+}
+\renewcommand{\lstlistingname}{Listagem}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+\end{abstract}
+\begin{resumo}
+\end{resumo}
+
+
+\section{Introdução}\label{section:intro}
+
+São chamados Números Escadinha aqueles que seguem um conjunto simples
+de regras:
+\begin{lyxlist}{00.00.0000}
+\item [{1.}] Não começam com o dígito zero
+\item [{2.}] Não possuem dígitos repetidos
+\item [{3.}] Entre um dígito e o seguinte, a diferença em módulo não é
+superior a 2.
+\end{lyxlist}
+O problema a ser resolvido neste artigo é o de se encontrar quantos
+Números Escadinha existem em uma dada base. Fica evidente que eles
+são finitos, devido à Regra 2 - o número de dígitos é limitado ao
+tamanho da base, senão dígitos começariam a se repetir.
+
+
+\section{Primeira Tentativa}\label{section:primeira}
+
+
+\subsection{Algorítmos}\label{section:primeira:algoritmos}
+
+
+\subsubsection{Escadinha}\label{section:primeira:algoritmos:escadinha}
+
+\begin{lstlisting}
+escadinha(base):
+  count $\leftarrow$ 0
+  num $\leftarrow$ [0] 
+	
+  enquanto num $\neq$ maxnum: 
+    num $\leftarrow$ incrementa(num, base) 
+    se valido(num):
+      count++
+
+  $\rightarrow$ count
+\end{lstlisting}
+
+Onde {\sf [0]} é um {\em array} contendo o inteiro $0$.
+
+
+
+\subsection{Resultados}\label{section:primeira:resultados}
+Obviamente o algoritmo é ruim. Mas quão ruim? Seria possível resolver o problema para uma entrada razoavel? A fim de curiosidade, o algorítmo foi implementado e os resultados podem ser vistos na Tabela~\ref{table:resultados-1}.
+
+\begin{table}[h]
+\caption{Primeira Tentativa}
+\label{table:resultados-1}
+\begin{tabular}{ll}
+  {\sf num} & Tempo (s) \\
+  \hline
+  2 & 0.01 \\
+  3 & 0.01 \\
+  4 & 0.01 \\
+  5 & 0.02 \\
+  6 & 0.09 \\
+  7 & 1.25 \\
+  8 & 23.9 \\
+  9 & 540.9    
+\end{tabular}
+\end{table}
+
+
+
+\end{document}
