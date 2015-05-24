@@ -5,6 +5,7 @@ import sys
 import pprint
 from baseconv import BaseConverter
 
+
 class arizona(object):
     def __init__(self):
         self.nodes = {}
