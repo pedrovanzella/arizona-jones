@@ -18,7 +18,7 @@ class arizona(object):
     def compara(self, u, v):
         """Retorna True se v é maior que u e se entre u e v somente um dígito
         em base 6 é alterado"""
-        if v < u:
+        if int(v) < int(u):
             return False
         bsu = self.base6(u)
         bsv = self.base6(v)
@@ -46,12 +46,15 @@ class arizona(object):
         """Lê um arquivo e cria um nodo para cada linha diferente"""
         with open(file) as f:
             for line in f:
-                self.nodes[line] = []
+                self.nodes[line.rstrip()] = []
 
     def create_vertices(self):
         """A partir dos nodos, cria vértices que respeitem as regras"""
-        pass
-
+        for u in self.nodes:
+            gen = [v for v in self.nodes if v > u]
+            for v in gen:
+                if self.compara(u, v):
+                    self.vertices[u + "," + v] = True
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
@@ -70,3 +73,7 @@ if __name__ == "__main__":
 
     print "Lidos os nodos:"
     pp.pprint(a.nodes)
+
+    a.create_vertices()
+    print "Criados os vértices:"
+    pp.pprint(a.vertices)
