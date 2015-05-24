@@ -3,7 +3,7 @@
 
 import sys
 import pprint
-
+from baseconv import BaseConverter
 
 class arizona(object):
     def __init__(self):
@@ -37,13 +37,20 @@ class arizona(object):
         """Retorna uma representação em base 6 do número em um array"""
         n = int(num)
         if self.nodes[num] == []:
-            self.nodes[num] = [0, 0, 0]  # TODO: actually do the thing
+            base6 = BaseConverter('012345')
+            num6 = base6.encode(n)
+            self.nodes[num] = map(int, num6)
         return self.nodes[num]
 
     def create_nodes(self, file):
+        """Lê um arquivo e cria um nodo para cada linha diferente"""
         with open(file) as f:
             for line in f:
                 self.nodes[line] = []
+
+    def create_vertices(self):
+        """A partir dos nodos, cria vértices que respeitem as regras"""
+        pass
 
 
 if __name__ == "__main__":
@@ -56,5 +63,10 @@ if __name__ == "__main__":
     print "Lendo o arquivo %s" % sys.argv[1]
     a = arizona()
     a.create_nodes(sys.argv[1])
+
+    # Force conversion of all nodes
+    # for n in a.nodes:
+    #    a.base6(n)
+
     print "Lidos os nodos:"
     pp.pprint(a.nodes)
