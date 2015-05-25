@@ -60,6 +60,7 @@ class arizona(object):
 
 
     def vizinhos(u):
+        """Retorna uma lista de vizinhos de um nodo"""
         viz = []
         if self.nodes[u]:
             for v in self.nodes:
