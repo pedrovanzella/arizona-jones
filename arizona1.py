@@ -67,7 +67,7 @@ class arizona(object):
             for v in gen:
                 if self.compara(u, v):
                     print "Vértice: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
-                    self.vertices[u + "," + v] = True
+                    self.vertices[u + "," + v] = None
 
 
     def vizinhos(self, u):
@@ -101,21 +101,36 @@ class arizona(object):
 
 
     def existe_aresta(self, u, v):
-        return self.vertices.get(u + "," + v, False)
+        return self.vertices.get(u + "," + v, False) != False
 
     def marked(self, u):
         return self.marks.get(u, False)
 
 
+    def vizinhos_que_chegam(self, u):
+        """Retorna uma lista de todos os nodos que chegam em u"""
+        lista = []
+        if self.nodes[u]:
+            for v in self.nodes:
+                # inverso de self.vizinhos!
+                if self.existe_aresta(v, u):
+                    lista.append(v)
+        return lista
+
+
+    def popula_tamanho_paths(self, u):
+        """Popula o tamanho do maior caminho que liga a u"""
+        # Olha os vizinhos que chegam em u
+        # o tamanho de u é o maior tamanho deles, mais um
+
+
     def calcula_longest_path(self):
         """Retorna o maior caminho do grafo"""
         for u in self.nodes:
-            path = self.caminha(u)
-            if len(path) > len(self.longest_path):
-                self.longest_path = list(path)
+            self.popula_tamanho_paths(u)
+
 
         return self.longest_path
-
 
 
 if __name__ == "__main__":
@@ -152,4 +167,7 @@ if __name__ == "__main__":
     print "O maior caminho é:"
     pp.pprint(a.calcula_longest_path())
     print "E seu tamanho é: %d" % len(a.longest_path)
+
+    print "Vértices: "
+    pp.pprint(a.vertices)
 
