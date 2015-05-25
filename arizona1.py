@@ -59,32 +59,36 @@ class arizona(object):
                     self.vertices[u + "," + v] = True
 
 
-    def vizinhos(u):
+    def vizinhos(self, u):
         """Retorna uma lista de vizinhos de um nodo"""
         viz = []
         if self.nodes[u]:
             for v in self.nodes:
-                if existe_aresta(u, v):
+                if self.existe_aresta(u, v):
                     viz.append(v)
         return viz
 
 
-    def caminha(u):
+    def caminha(self, u):
         """Caminha no grafo a partir de um nodo u"""
         path = []
         self.clear_marks()
         self.marks[u] = True
         l = [u]
 
-        while len(l) > 1:
+        while len(l) > 0:
             u = l.pop(0)
             path.append(u)
             for v in self.vizinhos(u):
-                if not self.mark[v]:
+                if not self.marked(v)
                     self.marks[v] = True
                     l.append(v)
 
         return path
+
+
+    def existe_aresta(self, u, v):
+        return self.vertices.get(u + "," + v, False)
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
@@ -107,3 +111,11 @@ if __name__ == "__main__":
     a.create_vertices()
     print "Criados os vértices:"
     pp.pprint(a.vertices)
+
+    for u in a.nodes:
+        print "Os vizinhos de %s são:" % u
+        pp.pprint(a.vizinhos(u))
+
+    for u in a.nodes:
+        print "Caminhando a partir de %s:" % u
+        pp.pprint(a.caminha(u))
