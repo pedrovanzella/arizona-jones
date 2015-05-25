@@ -80,7 +80,7 @@ class arizona(object):
             u = l.pop(0)
             path.append(u)
             for v in self.vizinhos(u):
-                if not self.marked(v)
+                if not self.marked(v):
                     self.marks[v] = True
                     l.append(v)
 
@@ -89,6 +89,21 @@ class arizona(object):
 
     def existe_aresta(self, u, v):
         return self.vertices.get(u + "," + v, False)
+
+    def marked(self, u):
+        return self.marks.get(u, False)
+
+
+    def calcula_longest_path(self):
+        """Retorna o maior caminho do grafo"""
+        for u in self.nodes:
+            path = self.caminha(u)
+            if len(path) > len(self.longest_path):
+                self.longest_path = path[:]
+
+        return self.longest_path
+
+
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
@@ -105,17 +120,23 @@ if __name__ == "__main__":
     # for n in a.nodes:
     #    a.base6(n)
 
-    print "Lidos os nodos:"
-    pp.pprint(a.nodes)
+    print "Lidos os nodos"
+    # pp.pprint(a.nodes)
 
     a.create_vertices()
-    print "Criados os vértices:"
-    pp.pprint(a.vertices)
+    print "Criados os vértices"
+    # pp.pprint(a.vertices)
 
-    for u in a.nodes:
-        print "Os vizinhos de %s são:" % u
-        pp.pprint(a.vizinhos(u))
+    # for u in a.nodes:
+    #     print "Os vizinhos de %s são:" % u
+    #     pp.pprint(a.vizinhos(u))
 
-    for u in a.nodes:
-        print "Caminhando a partir de %s:" % u
-        pp.pprint(a.caminha(u))
+    # for u in a.nodes:
+    #     print "Caminhando a partir de %s:" % u
+    #     pp.pprint(a.caminha(u))
+
+
+    print "O maior caminho é:"
+    pp.pprint(a.calcula_longest_path())
+    print "E seu tamanho é: %d" % len(a.longest_path)
+
