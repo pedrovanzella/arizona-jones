@@ -11,6 +11,7 @@ class arizona(object):
         self.nodes = {}
         self.vertices = {}
         self.marks = {}
+        self.longest_path = []
 
     def clear_marks(self):
         for mark in self.marks:
@@ -56,6 +57,33 @@ class arizona(object):
             for v in gen:
                 if self.compara(u, v):
                     self.vertices[u + "," + v] = True
+
+
+    def vizinhos(u):
+        viz = []
+        if self.nodes[u]:
+            for v in self.nodes:
+                if existe_aresta(u, v):
+                    viz.append(v)
+        return viz
+
+
+    def caminha(u):
+        """Caminha no grafo a partir de um nodo u"""
+        path = []
+        self.clear_marks()
+        self.marks[u] = True
+        l = [u]
+
+        while len(l) > 1:
+            u = l.pop(0)
+            path.append(u)
+            for v in self.vizinhos(u):
+                if not self.mark[v]:
+                    self.marks[v] = True
+                    l.append(v)
+
+        return path
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
