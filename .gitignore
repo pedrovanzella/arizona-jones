@@ -1,2 +1,5 @@
 *.pyc
 docs/auto
+docs/*.log 
+docs/*.aux
+docs/*.pdf
