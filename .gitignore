@@ -3,3 +3,6 @@ docs/auto
 docs/*.log 
 docs/*.aux
 docs/*.pdf
+docs/*.prv
+docs/_region_.*
+docs/prv_relatorio.*
