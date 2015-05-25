@@ -24,16 +24,24 @@ class arizona(object):
             return False
         bsu = self.base6(u)
         bsv = self.base6(v)
+
         digitos_diferentes = 0
-        for i, d in enumerate(bsu):
-            if d != bsv[i]:
+
+        bsu = self.pad(bsu, len(bsv))
+
+        for i in range(0, len(bsv)):
+            if bsu[-i] != bsv[-i]:
                 digitos_diferentes += 1
             if digitos_diferentes > 1:
-                break
+                return False
 
-        if digitos_diferentes > 1:
-            return False
         return True
+
+    def pad(self, n, size):
+        while len(n) < size:
+            n = [0] + n
+
+        return n
 
     def base6(self, num):
         """Retorna uma representação em base 6 do número em um array"""
@@ -53,9 +61,10 @@ class arizona(object):
     def create_vertices(self):
         """A partir dos nodos, cria vértices que respeitem as regras"""
         for u in self.nodes:
-            gen = [v for v in self.nodes if v > u]
+            gen = [v for v in self.nodes if int(v) > int(u)]
             for v in gen:
                 if self.compara(u, v):
+                    print "Vértice: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
                     self.vertices[u + "," + v] = True
 
 
@@ -78,11 +87,11 @@ class arizona(object):
 
         while len(l) > 0:
             u = l.pop(0)
-            path.append(u)
+            path.append((u, self.nodes[u]))
             for v in self.vizinhos(u):
                 if not self.marked(v):
                     self.marks[v] = True
-                    l.append(v)
+                    l = [v] + l
 
         return path
 
@@ -99,7 +108,7 @@ class arizona(object):
         for u in self.nodes:
             path = self.caminha(u)
             if len(path) > len(self.longest_path):
-                self.longest_path = path[:]
+                self.longest_path = list(path)
 
         return self.longest_path
 
