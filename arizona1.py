@@ -8,7 +8,9 @@ from baseconv import BaseConverter
 
 class arizona(object):
     def __init__(self):
+        # Node: <string -> base6(int(string))>
         self.nodes = {}
+        # Vertex: <"u,v" -> lenght of the longest path leading into v>
         self.vertices = {}
         self.marks = {}
         self.longest_path = []
