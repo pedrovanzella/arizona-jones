@@ -57,6 +57,12 @@ Por exemplo, no conjunto $782$ $229$ $446$ $527$ $874$ $19$ $829$ $70$ $830$ $99
 
 \section{Primeira Tentativa}\label{section:primeira}
 
+\subsection{Estruturas de Dados}\label{section:primeira:estruturas}
+Vamos representar o conjunto de números como um grafo. Isto nos permitirá ligar os nodos que formam seqüências válidas e caminhar pelo grafo procurando o maior caminho entre todos.
+
+Para representar internamente o grafo, utilizamos três dicionários: um dicionário para nodos, um para vértices e um para marcas.
+
+O dicionário de nodos tem uma propriedade interessante: seu índice é o número em base 10, como foi lido do arquivo; seu conteúdo é a representa\c{c}ão em base 6 do mesmo número, como um array de dígitos, para facilitar a compara\c{c}ão.
 
 \subsection{Algorítmos}\label{section:primeira:algoritmos}
 

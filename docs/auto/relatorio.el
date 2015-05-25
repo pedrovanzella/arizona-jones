@@ -21,6 +21,7 @@
    (LaTeX-add-labels
     "section:intro"
     "section:primeira"
+    "section:primeira:estruturas"
     "section:primeira:algoritmos"
     "section:primeira:algoritmos:escadinha"
     "section:primeira:resultados"
