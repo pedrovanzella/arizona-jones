@@ -110,7 +110,7 @@ class arizona(object):
     def vizinhos_que_chegam(self, u):
         """Retorna uma lista de todos os nodos que chegam em u"""
         lista = []
-        if self.nodes[u]:
+        if self.nodes.get(u, False):
             for v in self.nodes:
                 # inverso de self.vizinhos!
                 if self.existe_aresta(v, u):
@@ -122,6 +122,12 @@ class arizona(object):
         """Popula o tamanho do maior caminho que liga a u"""
         # Olha os vizinhos que chegam em u
         # o tamanho de u é o maior tamanho deles, mais um
+        u = 0
+        for v in self.vizinhos_que_chegam(u):
+            if v == None:
+                v = self.popula_tamanho_paths(v)
+            if v > u:
+                u = v + 1
 
 
     def calcula_longest_path(self):
