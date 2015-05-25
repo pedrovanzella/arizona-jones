@@ -79,7 +79,9 @@ class arizona(object):
 
 
     def caminha(self, u):
-        """Caminha no grafo a partir de um nodo u"""
+        """Caminha no grafo a partir de um nodo u
+        IMPORTANTE: Retorna todo mundo, não só um caminho
+        ANTA"""
         path = []
         self.clear_marks()
         self.marks[u] = True
