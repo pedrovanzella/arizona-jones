@@ -108,6 +108,10 @@ class arizona(object):
         return self.marks.get(u, False)
 
 
+    # AQUI ESTÁ MEU problema
+    # Esta merda está retornando uma lista
+    # Mas deveria retornar um dicionário
+    # conserte isso, SEU ANIMAL
     def vizinhos_que_chegam(self, u):
         """Retorna uma lista de todos os nodos que chegam em u"""
         lista = []
@@ -136,6 +140,7 @@ class arizona(object):
         print "pesos", pesos
         if len(pesos) == 0:
             return None
+        print type(pesos)
         max = pesos[0]
         for p in pesos:
             if p > self.pesos[max]:
