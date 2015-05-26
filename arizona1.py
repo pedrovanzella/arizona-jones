@@ -31,7 +31,7 @@ class arizona(object):
 
         bsu = self.pad(bsu, len(bsv))
 
-        for i in range(0, len(bsv) - 1):
+        for i in range(0, len(bsv)):
             if bsu[-i] != bsv[-i]:
                 digitos_diferentes += 1
             if digitos_diferentes > 1:
