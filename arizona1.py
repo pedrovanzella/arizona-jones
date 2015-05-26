@@ -122,17 +122,13 @@ class arizona(object):
         """Popula o tamanho do maior caminho que liga a u"""
         # Olha os vizinhos que chegam em u
         # o tamanho de u é o maior tamanho deles, mais um
-        v = self.pesos.get(u, 0)
-        max = 0
-        for viz in self.vizinhos_que_chegam(u):
-            peso = self.pesos.get(viz, False)
-            if not peso:
-                self.pesos[viz] = self.popula_tamanho_paths(viz) + 1
-                peso = self.pesos[viz]
-            if peso > max:
-                max = peso
-        self.pesos[v] = max
-        return max
+        for v in self.vizinhos_que_chegam(u):
+            if self.pesos.get(v) is None:
+                self.pesos[v] = self.popula_tamanho_paths(v)
+            if self.pesos[v] > self.pesos[u]:
+                self.pesos[u] = self.pesos[v] + 1
+
+        return self.pesos[u]
 
 
     def encontra_maior_peso(self, pesos):
