@@ -128,6 +128,7 @@ class arizona(object):
             peso = self.pesos.get(viz, False)
             if not peso:
                 self.pesos[viz] = self.popula_tamanho_paths(viz) + 1
+                peso = self.pesos[viz]
             if peso > max:
                 max = peso
         self.pesos[v] = max
