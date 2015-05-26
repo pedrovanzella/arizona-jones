@@ -65,7 +65,7 @@ class arizona(object):
             gen = [v for v in self.nodes if int(v) > int(u)]
             for v in gen:
                 if self.compara(u, v):
-                    print "Aresta: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
+                    # print "Aresta: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
                     self.edges[u + "," + v] = True
 
 
@@ -179,10 +179,6 @@ if __name__ == "__main__":
 
     print "Arestas: "
     pp.pprint(a.edges)
-
-    print "Populando pesos"
-    for u in a.nodes:
-        a.popula_tamanho_paths(u)
 
     print "Populado:"
     pp.pprint(a.pesos)
