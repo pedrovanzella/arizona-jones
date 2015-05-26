@@ -8,11 +8,10 @@ from baseconv import BaseConverter
 
 class arizona(object):
     def __init__(self):
-        # Node: <string -> base6(int(string))>
         self.nodes = {}
-        # Vertex: <"u,v" -> lenght of the longest path leading into v>
-        self.vertices = {}
+        self.edges = {}
         self.marks = {}
+        self.pesos = {}
         self.longest_path = []
 
     def clear_marks(self):
@@ -60,14 +59,14 @@ class arizona(object):
             for line in f:
                 self.nodes[line.rstrip()] = []
 
-    def create_vertices(self):
+    def create_edges(self):
         """A partir dos nodos, cria vértices que respeitem as regras"""
         for u in self.nodes:
             gen = [v for v in self.nodes if int(v) > int(u)]
             for v in gen:
                 if self.compara(u, v):
-                    print "Vértice: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
-                    self.vertices[u + "," + v] = None
+                    print "Aresta: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
+                    self.edges[u + "," + v] = True
 
 
     def vizinhos(self, u):
@@ -101,7 +100,7 @@ class arizona(object):
 
 
     def existe_aresta(self, u, v):
-        return self.vertices.get(u + "," + v, False) != False
+        return self.edges.get(u + "," + v, False) != False
 
     def marked(self, u):
         return self.marks.get(u, False)
@@ -122,12 +121,16 @@ class arizona(object):
         """Popula o tamanho do maior caminho que liga a u"""
         # Olha os vizinhos que chegam em u
         # o tamanho de u é o maior tamanho deles, mais um
-        u = 0
-        for v in self.vizinhos_que_chegam(u):
-            if v == None:
-                v = self.popula_tamanho_paths(v)
-            if v > u:
-                u = v + 1
+        v = self.pesos.get(u, 0)
+        max = 0
+        for viz in self.vizinhos_que_chegam(u):
+            peso = self.pesos.get(viz, False)
+            if not peso:
+                self.pesos[viz] = self.popula_tamanho_paths(viz) + 1
+            if peso > max:
+                max = peso
+        self.pesos[v] = max
+        return max
 
 
     def calcula_longest_path(self):
@@ -157,9 +160,9 @@ if __name__ == "__main__":
     print "Lidos os nodos"
     # pp.pprint(a.nodes)
 
-    a.create_vertices()
-    print "Criados os vértices"
-    # pp.pprint(a.vertices)
+    a.create_edges()
+    print "Criadas as arestas"
+    # pp.pprint(a.edges)
 
     # for u in a.nodes:
     #     print "Os vizinhos de %s são:" % u
@@ -174,6 +177,12 @@ if __name__ == "__main__":
     pp.pprint(a.calcula_longest_path())
     print "E seu tamanho é: %d" % len(a.longest_path)
 
-    print "Vértices: "
-    pp.pprint(a.vertices)
+    print "Arestas: "
+    pp.pprint(a.edges)
 
+    print "Populando pesos"
+    for u in a.nodes:
+        a.popula_tamanho_paths(u)
+
+    print "Populado:"
+    pp.pprint(a.pesos)
