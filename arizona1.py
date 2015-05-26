@@ -133,11 +133,28 @@ class arizona(object):
         return max
 
 
+    def encontra_maior_peso(self, pesos):
+        max = None
+        for peso in pesos:
+            if peso > max:
+                max = peso
+
+        return max
+
+
     def calcula_longest_path(self):
         """Retorna o maior caminho do grafo"""
         for u in self.nodes:
             self.popula_tamanho_paths(u)
 
+        maior_peso = self.encontra_maior_peso(self.pesos)
+        self.longest_path = [maior_peso]
+
+        vizinhos = self.vizinhos_que_chegam(maior_peso)
+        while len(vizinhos) > 0:
+            maior_peso = self.encontra_maior_peso(vizinhos)
+            self.longest_path = [maior_peso] + self.longest_path
+            vizinhos = self.vizinhos_que_chegam(maior_peso)
 
         return self.longest_path
 
@@ -177,8 +194,8 @@ if __name__ == "__main__":
     pp.pprint(a.calcula_longest_path())
     print "E seu tamanho é: %d" % len(a.longest_path)
 
-    print "Arestas: "
-    pp.pprint(a.edges)
+    #print "Arestas: "
+    #pp.pprint(a.edges)
 
-    print "Populado:"
-    pp.pprint(a.pesos)
+    #print "Populado:"
+    #pp.pprint(a.pesos)
