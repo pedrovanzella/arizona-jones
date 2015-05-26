@@ -59,6 +59,7 @@ class arizona(object):
         with open(file) as f:
             for line in f:
                 self.nodes[line.rstrip()] = []
+                self.pesos[line.rstrip()] = 0
 
     def create_edges(self):
         """A partir dos nodos, cria vértices que respeitem as regras"""
@@ -133,8 +134,15 @@ class arizona(object):
 
     def encontra_maior_peso(self, pesos):
         print "pesos", pesos
-        nodes = [self.nodes[str(p)] for p in pesos]
-        return max(nodes.iteritems(), key=operator.itemgetter(1))[0]
+        if len(pesos) == 0:
+            return None
+        max = pesos[0]
+        for p in pesos:
+            if p > self.pesos[max]:
+                max = p
+
+        print "Maior: ", max
+        return max
 
 
     def calcula_longest_path(self):
@@ -173,6 +181,7 @@ if __name__ == "__main__":
 
     print "Lidos os nodos"
     pp.pprint(a.nodes)
+    pp.pprint(a.pesos)
 
     a.create_edges()
     print "Criadas as arestas"
