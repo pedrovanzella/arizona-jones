@@ -4,6 +4,7 @@
 import sys
 import pprint
 from baseconv import BaseConverter
+import operator
 
 
 class arizona(object):
@@ -134,14 +135,9 @@ class arizona(object):
 
 
     def encontra_maior_peso(self, pesos):
-        max = 0
-        if len(pesos) == 0:
-            return None
-        for peso in pesos:
-            if self.pesos[peso] >= self.pesos[max]:
-                max = peso
-
-        return max
+        print "pesos", pesos
+        nodes = [self.nodes[str(p)] for p in pesos]
+        return max(nodes.iteritems(), key=operator.itemgetter(1))[0]
 
 
     def calcula_longest_path(self):
@@ -179,7 +175,7 @@ if __name__ == "__main__":
     #    a.base6(n)
 
     print "Lidos os nodos"
-    # pp.pprint(a.nodes)
+    pp.pprint(a.nodes)
 
     a.create_edges()
     print "Criadas as arestas"
