@@ -30,7 +30,7 @@ class arizona(object):
 
         bsu = self.pad(bsu, len(bsv))
 
-        for i in range(0, len(bsv)):
+        for i in range(0, len(bsv) - 1):
             if bsu[-i] != bsv[-i]:
                 digitos_diferentes += 1
             if digitos_diferentes > 1:
@@ -134,9 +134,11 @@ class arizona(object):
 
 
     def encontra_maior_peso(self, pesos):
-        max = None
+        max = 0
+        if len(pesos) == 0:
+            return None
         for peso in pesos:
-            if peso > max:
+            if self.pesos[peso] >= self.pesos[max]:
                 max = peso
 
         return max
@@ -148,12 +150,14 @@ class arizona(object):
             self.popula_tamanho_paths(u)
 
         maior_peso = self.encontra_maior_peso(self.pesos)
-        self.longest_path = [maior_peso]
+        print "(%r,%r)" % (maior_peso, self.pesos[maior_peso])
+        self.longest_path = [self.nodes[maior_peso]]
 
         vizinhos = self.vizinhos_que_chegam(maior_peso)
         while len(vizinhos) > 0:
             maior_peso = self.encontra_maior_peso(vizinhos)
-            self.longest_path = [maior_peso] + self.longest_path
+            print "(%r,%r)" % (maior_peso, self.pesos[maior_peso])
+            self.longest_path = [self.nodes[maior_peso]] + self.longest_path
             vizinhos = self.vizinhos_que_chegam(maior_peso)
 
         return self.longest_path
