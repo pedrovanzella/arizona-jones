@@ -94,12 +94,54 @@ criar_nodos(arquivo):
       pesos[l] = 0
 \end{lstlisting}
 
-Onde {\sf []} é um \textsf{array} vazio. Este array, nesta implementa\c{c}ão, conterá a representa\c{c}ão em base 6 do seu índice correspondente. Isto é feito para memorizar a conversão, já que este valor poderá ser testado várias vezes pelo algoritmo descrito na sessão~\ref{sec:algoritmos:compara}.
-Veja que também inicializamos uma posi\c{c}ão no dicionário de pesos. Este peso será atualizado pelo algoritmo descrito na sessão~\ref{sec:algoritmos:calcula-tamanho-caminhos}.
+Onde {\sf []} é um \textsf{array} vazio. Este array, nesta implementa\c{c}ão, conterá a representa\c{c}ão em base 6 do seu índice correspondente. Isto é feito para memorizar a conversão, já que este valor poderá ser testado várias vezes pelo algoritmo descrito na sessão~\ref{sec:algoritmos:comparar}.
+Veja que também inicializamos uma posi\c{c}ão no dicionário de pesos. Este peso será atualizado pelo algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:calcular-tamanho-caminhos}.
 
-\subsection{Comparar}\label{sec:algoritmos:compara}
+\subsection{Criar Arestas}\label{sec:algoritmos:criar-arestas}
+O algoritmo de criar arestas itera pelos nodos, conectando aqueles que podem formar uma seqüência válida para o problema.
+\begin{lstlisting}
+criar_arestas():
+   para todo u em nodos:
+      para todo v maior que u em nodos:
+         se comparar(u, v):
+            arestas[u,v] = Verdadeiro
+\end{lstlisting}
 
-\subsection{Calcular Tamanho do Caminho}\label{sec:algoritmos:calcula-tamanho-caminho}
+Há uma chamada para o algoritmo {\sf comparar()}, que é explicado na se\c{c}ão~\ref{sec:algoritmos:comparar}.
+Não é necessário testar todos os nodos contra todos, no entanto. Como somente seqüências crescentes podem ser geradas, filtramos {\sf v} para ser maior que {\sf u}.
+O conteúdo do dicionário de arestas não é importante. O valor dele pode, portanto, ser qualquer um.
+
+\subsection{Comparar}\label{sec:algoritmos:comparar}
+Esta fun\c{c}ão compara dois índices, {\sf u} e {\sf v}, retornando um booleano que indica se {\sf u} pode ser ligado a {\sf v} através de uma aresta.
+\begin{lstlisting}
+comparar(u, v):
+   se v < u:
+      retorna Falso
+
+   bsu = base6(u)
+   bsv = base6(v)
+
+   digitos_diferentes = 0
+
+   bsu = pad(bsu, lenght(bsv))
+
+   para i de lenght(bsv) a 0:
+      se bsu[i] != bsv[i]:
+         digitos_diferentes += 1
+      se digitos_diferentes > 1
+         retorna Falso
+
+   retorna Verdadeiro
+\end{lstlisting}
+
+Aqui vemos uma chamada para a fun\c{c}ão {\sf base6()}, que será explicada na se\c{c}ão~\ref{sec:algoritmos:base6}.
+Há também uma chamada para {\sf pad()}. Esta fun\c{c}ão apenas adiciona zeros à esquerda de seu primeiro argumento até que ele fique com o tamanho de seu segundo argumento. Isto nos permite testar números que têm um número de dígitos diferentes.
+
+% TODO: terminar de explicar isto!
+
+\subsection{Converter para Base 6}\label{sec:algoritmos:base6}
+
+\subsection{Calcular Tamanho do Caminho}\label{sec:algoritmos:calcular-tamanho-caminhos}
 
 \subsection{Achar Maior Caminho}\label{sec:algoritmos:achar-maior-caminho}
 
