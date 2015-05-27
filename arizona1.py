@@ -5,15 +5,19 @@ import sys
 import pprint
 from baseconv import BaseConverter
 import operator
+import pygraphviz as pgv
 
 
 class arizona(object):
-    def __init__(self):
+    def __init__(self, make_graph=False):
         self.nodes = {}
         self.edges = {}
         self.marks = {}
         self.pesos = {}
         self.longest_path = []
+        self.make_graph = make_graph
+        if self.make_graph:
+            self.graph = pgv.AGraph()
 
     def clear_marks(self):
         for mark in self.marks:
@@ -60,6 +64,8 @@ class arizona(object):
             for line in f:
                 self.nodes[line.rstrip()] = []
                 self.pesos[line.rstrip()] = 0
+                if self.make_graph:
+                    self.graph.add_node(line.rstrip())
 
     def create_edges(self):
         """A partir dos nodos, cria vértices que respeitem as regras"""
@@ -69,6 +75,8 @@ class arizona(object):
                 if self.compara(u, v):
                     # print "Aresta: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
                     self.edges[u + "," + v] = True
+                    if self.make_graph:
+                        self.graph.add_edge(u, v)
 
 
     def vizinhos(self, u):
@@ -156,7 +164,7 @@ if __name__ == "__main__":
 
     print "Arizona Jones entrou no templo"
     print "Lendo o arquivo %s" % sys.argv[1]
-    a = arizona()
+    a = arizona(make_graph=True)
     a.create_nodes(sys.argv[1])
 
     # Force conversion of all nodes
@@ -189,3 +197,5 @@ if __name__ == "__main__":
 
     # print "Populado:"
     # pp.pprint(a.pesos)
+    print "Imprimindo grafo"
+    a.graph.write(sys.argv[1] + ".dot")
