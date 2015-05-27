@@ -1,3 +1,3 @@
 all:
-	pdflatex relatorio.tex
-	pdflatex relatorio.tex
+	pdflatex --shell-escape relatorio.tex
+	pdflatex --shell-escape relatorio.tex

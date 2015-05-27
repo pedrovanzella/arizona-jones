@@ -1,6 +1,10 @@
 \documentclass[12pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{algorithm2e}
+\usepackage{dot2texi}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
@@ -67,7 +71,10 @@ O dicionário de nodos tem uma propriedade interessante: seu índice é o númer
 % TODO: EXPLICAR ISTO!
 %O grafo é dirigido e acíclico, então o algoritmo de encontrar o maior caminho é O(n): https://en.wikipedia.org/wiki/Longest_path_problem
 
-\input{testeprof.dot.tex}
+\begin{dot2tex}[neato,options=-tmath]
+  \input{testeprof.dot}
+\end{dot2tex}
+
 
 \subsection{Algorítmos}\label{section:primeira:algoritmos}
 

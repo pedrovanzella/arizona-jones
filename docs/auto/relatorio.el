@@ -10,10 +10,13 @@
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "lstinline")
    (TeX-run-style-hooks
     "latex2e"
+    "testeprof"
     "article"
     "art12"
     "fontenc"
     "algorithm2e"
+    "dot2texi"
+    "tikz"
     "sbc-template"
     "babel"
     "inputenc"
