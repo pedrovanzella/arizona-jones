@@ -9,3 +9,5 @@ docs/prv_relatorio.*
 docs/auto/*
 docs/auto
 docs/relatorio-dot2tex-*
+docs/auto/*
+docs/auto/relatorio.el

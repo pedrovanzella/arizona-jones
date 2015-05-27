@@ -53,33 +53,35 @@ Grande do Sul (PUCRS) \\ Av. Ipiranga, 6681 - Porto Alegre / RS / Brasil
 \end{resumo}
 
 
-\section{Introdução}\label{section:intro}
+\section{Introdução}\label{sec:intro}
 
 O problema a ser resolvido consiste em encontrar, dentro de um conjunto de números, a maior seqüência crescente de números que, em base 6, têm somente um dígito de diferen\c{c}a entre um e outro.
 
 Por exemplo, no conjunto $782$ $229$ $446$ $527$ $874$ $19$ $829$ $70$ $830$ $992$ $430$ $649$, a maior seqüência é $649$ $829$ $830$.
 
-\section{Primeira Tentativa}\label{section:primeira}
-
-\subsection{Estruturas de Dados}\label{section:primeira:estruturas}
+\section{Estruturas de Dados}\label{sec:estruturas}
 Vamos representar o conjunto de números como um grafo. Isto nos permitirá ligar os nodos que formam seqüências válidas e caminhar pelo grafo procurando o maior caminho entre todos.
 
-Para representar internamente o grafo, utilizamos três dicionários: um dicionário para nodos, um para vértices e um para marcas.
+Para representar internamente o grafo, utilizamos três dicionários: um dicionário para nodos, um para vértices e um para o peso dos nodos. Este último será explicado em detalhe na se\c{c}ão~\ref{sec:algorimos:achar-maior-caminho}.
 
 O dicionário de nodos tem uma propriedade interessante: seu índice é o número em base 10, como foi lido do arquivo; seu conteúdo é a representa\c{c}ão em base 6 do mesmo número, como um array de dígitos, para facilitar a compara\c{c}ão.
 
 % TODO: EXPLICAR ISTO!
 %O grafo é dirigido e acíclico, então o algoritmo de encontrar o maior caminho é O(n): https://en.wikipedia.org/wiki/Longest_path_problem
 
+Podemos ver na Imagem~\ref{fig:testeprof} um grafo gerado de acordo com o exemplo dado na se\c{c}ão~\ref{sec:intro}
+
 \begin{dot2tex}[neato,options=-tmath]
+  \label{fig:testeprof}
+  \caption{Exemplo de grafo}
   \input{testeprof.dot}
 \end{dot2tex}
 
 
-\subsection{Algorítmos}\label{section:primeira:algoritmos}
+\section{Algoritmos}\label{sec:algoritmos}
 
 
-\subsubsection{Escadinha}\label{section:primeira:algoritmos:escadinha}
+\subsection{Achar Maior Caminho}\label{sec:algoritmos:achar-maior-caminho}
 
 \begin{lstlisting}
 escadinha(base):
@@ -98,12 +100,12 @@ Onde {\sf [0]} é um {\em array} contendo o inteiro $0$.
 
 
 
-\subsection{Resultados}\label{section:primeira:resultados}
-Obviamente o algoritmo é ruim. Mas quão ruim? Seria possível resolver o problema para uma entrada razoavel? A fim de curiosidade, o algorítmo foi implementado e os resultados podem ser vistos na Tabela~\ref{table:resultados-1}.
+\section{Resultados}\label{sec:resultados}
+Obviamente o algoritmo é ruim. Mas quão ruim? Seria possível resolver o problema para uma entrada razoavel? A fim de curiosidade, o algorítmo foi implementado e os resultados podem ser vistos na Tabela~\ref{tab:resultados-1}.
 
 \begin{table}[h]
 \caption{Primeira Tentativa}
-\label{table:resultados-1}
+\label{tab:resultados-1}
 \begin{tabular}{ll}
   {\sf num} & Tempo (s) \\
   \hline

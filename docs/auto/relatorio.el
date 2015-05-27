@@ -22,13 +22,13 @@
     "inputenc"
     "listings")
    (LaTeX-add-labels
-    "section:intro"
-    "section:primeira"
-    "section:primeira:estruturas"
-    "section:primeira:algoritmos"
-    "section:primeira:algoritmos:escadinha"
-    "section:primeira:resultados"
-    "table:resultados-1")
+    "sec:intro"
+    "sec:estruturas"
+    "fig:testeprof"
+    "sec:algoritmos"
+    "sec:algoritmos:achar-maior-caminho"
+    "sec:resultados"
+    "tab:resultados-1")
    (LaTeX-add-environments
     '("lyxlist" 1))))
 
