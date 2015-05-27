@@ -198,4 +198,4 @@ if __name__ == "__main__":
     # print "Populado:"
     # pp.pprint(a.pesos)
     print "Imprimindo grafo"
-    a.graph.write(sys.argv[1] + ".dot")
+    a.graph.write("docs/" + sys.argv[1] + ".dot")
