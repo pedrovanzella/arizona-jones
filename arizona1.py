@@ -17,7 +17,7 @@ class arizona(object):
         self.longest_path = []
         self.make_graph = make_graph
         if self.make_graph:
-            self.graph = pgv.AGraph()
+            self.graph = pgv.AGraph(directed=True)
 
     def clear_marks(self):
         for mark in self.marks:
