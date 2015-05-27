@@ -83,26 +83,25 @@ Podemos ver na Figura~\ref{fig:testeprof} um grafo gerado de acordo com o exempl
 
 
 \section{Algoritmos}\label{sec:algoritmos}
+Para resolver o problema, dividiu-se o programa em diferentes fun\c{c}ões, para facilitar a leitura e explica\c{c}ão.
 
-
-\subsection{Achar Maior Caminho}\label{sec:algoritmos:achar-maior-caminho}
-
+\subsection{Criar Nodos}\label{sec:algoritmos:criar-nodos}
+Esta fun\c{c}ão é trivial: lê-se cada linha do arquivo e adiciona-se ela ao dicionário de nodos
 \begin{lstlisting}
-escadinha(base):
-  count $\leftarrow$ 0
-  num $\leftarrow$ [0] 
-	
-  enquanto num $\neq$ maxnum: 
-    num $\leftarrow$ incrementa(num, base) 
-    se valido(num):
-      count++
-
-  $\rightarrow$ count
+criar_nodos(arquivo):
+   para cada linha l em arquivo:
+      nodos[l] = []
+      pesos[l] = 0
 \end{lstlisting}
 
-Onde {\sf [0]} é um {\em array} contendo o inteiro $0$.
+Onde {\sf []} é um \textsf{array} vazio. Este array, nesta implementa\c{c}ão, conterá a representa\c{c}ão em base 6 do seu índice correspondente. Isto é feito para memorizar a conversão, já que este valor poderá ser testado várias vezes pelo algoritmo descrito na sessão~\ref{sec:algoritmos:compara}.
+Veja que também inicializamos uma posi\c{c}ão no dicionário de pesos. Este peso será atualizado pelo algoritmo descrito na sessão~\ref{sec:algoritmos:calcula-tamanho-caminhos}.
 
+\subsection{Comparar}\label{sec:algoritmos:compara}
 
+\subsection{Calcular Tamanho do Caminho}\label{sec:algoritmos:calcula-tamanho-caminho}
+
+\subsection{Achar Maior Caminho}\label{sec:algoritmos:achar-maior-caminho}
 
 \section{Resultados}\label{sec:resultados}
 Obviamente o algoritmo é ruim. Mas quão ruim? Seria possível resolver o problema para uma entrada razoavel? A fim de curiosidade, o algorítmo foi implementado e os resultados podem ser vistos na Tabela~\ref{tab:resultados-1}.
