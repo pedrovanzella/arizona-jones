@@ -148,6 +148,15 @@ Outra verifica\c{c}ão é feita antes de se testar todos os dígitos, comparando
 Após estas verifica\c{c}ões, itera-se pelo maior \textit{array} (que é garantidamente {\sf bsv}, já que {\sf v} é maior que {\sf u}), comparando dígito a dígito, do final para o início, com {\sf bsu}. Caso mais que um dígito diferente seja encontrado, a verifica\c{c}ão pára e retorna-se Falso, para indicar que os nodos não podem ser conectados por uma aresta.
 
 \subsection{Converter para Base 6}\label{sec:algoritmos:base6}
+A conversão para base 6 em si não é importante - ela pode ser realizada por uma fun\c{c}ão de alguma biblioteca, ou manualmente com matemática simples. O que é importante aqui é a memoriza\c{c}ão do resultado.
+\begin{lstlisting}
+base6(num):
+   se nodos[num] == []:
+      nodos[num] = Conversor.ConverteBase(6, num)
+   retorna nodos[num]
+\end{lstlisting}
+
+Vemos aqui uma chamada para uma biblioteca arbitrária que faz a conversão e retorna um \textit{array} de inteiros, dígito a dígito. Mas isto somente é feito caso {\sf nodos[num]} seja um \textit{array} vazio ({\sf []}). Ele não ser vazio significa que {\sf base6()} já foi chamada nele, e seu conteúdo é a representa\c{c}ão em base 6 de sua chave.
 
 \subsection{Calcular Tamanho do Caminho}\label{sec:algoritmos:calcular-tamanho-caminhos}
 
