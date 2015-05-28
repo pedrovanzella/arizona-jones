@@ -94,7 +94,7 @@ criar_nodos(arquivo):
       pesos[l] = 0
 \end{lstlisting}
 
-Onde {\sf []} é um \textsf{array} vazio. Este array, nesta implementa\c{c}ão, conterá a representa\c{c}ão em base 6 do seu índice correspondente. Isto é feito para memorizar a conversão, já que este valor poderá ser testado várias vezes pelo algoritmo descrito na sessão~\ref{sec:algoritmos:comparar}.
+Onde {\sf []} é um \textit{array} vazio. Este array, nesta implementa\c{c}ão, conterá a representa\c{c}ão em base 6 do seu índice correspondente. Isto é feito para memorizar a conversão, já que este valor poderá ser testado várias vezes pelo algoritmo descrito na sessão~\ref{sec:algoritmos:comparar}.
 Veja que também inicializamos uma posi\c{c}ão no dicionário de pesos. Este peso será atualizado pelo algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:calcular-tamanho-caminhos}.
 
 \subsection{Criar Arestas}\label{sec:algoritmos:criar-arestas}
@@ -123,6 +123,9 @@ comparar(u, v):
 
    digitos_diferentes = 0
 
+   se len(bsv) - len(bsu) > 1:
+      retorna Falso
+
    bsu = pad(bsu, lenght(bsv))
 
    para i de lenght(bsv) a 0:
@@ -135,9 +138,14 @@ comparar(u, v):
 \end{lstlisting}
 
 Aqui vemos uma chamada para a fun\c{c}ão {\sf base6()}, que será explicada na se\c{c}ão~\ref{sec:algoritmos:base6}.
-Há também uma chamada para {\sf pad()}. Esta fun\c{c}ão apenas adiciona zeros à esquerda de seu primeiro argumento até que ele fique com o tamanho de seu segundo argumento. Isto nos permite testar números que têm um número de dígitos diferentes.
+Há também uma chamada para {\sf pad()}. Esta fun\c{c}ão apenas adiciona zeros à esquerda de seu primeiro argumento até que ele fique com o tamanho de seu segundo argumento. Isto nos permite testar números que têm uma quantidade de dígitos diferentes.
+Como um número pode diferir de outro em um dígito quando representados em base 6, temos duas op\c{c}ões: todos os dígitos são iguais, mas um dígito novo é adicionado à esquerda do menor (\textit{e.g.} $231_6$ e $1231_6$) ou a quantidade de dígitos é a mesma, mas apenas um dígito é diferente entre ambos os números (\textit{e.g.} $231_6$ e $232_6$).
 
-% TODO: terminar de explicar isto!
+O algoritmo também verifica se {\sf v} é maior que {\sf u}. Esta é um teste de sanidade apenas, já que o algoritmo de Criar Arestas (se\c{c}ão~\ref{sec:algoritmos:criar-arestas} só chama o algoritmo de Comparar para {\sf v}s maiores que {\sf u}.
+
+Outra verifica\c{c}ão é feita antes de se testar todos os dígitos, comparando os tamanhos dos dois \textit{arrays} de números em base 6. Se a diferen\c{c}a é maior que 1, há garantidamente mais que um dígito diferente também, e estes nodos não podem ser conectados. Esta verifica\c{c}ão é interessante porque pode rodar em tempo constante, dependendo de como a linguagem representa \textit{arrays}. Em uma linguagem como C, no entanto, não há vantagem.
+
+Após estas verifica\c{c}ões, itera-se pelo maior \textit{array} (que é garantidamente {\sf bsv}, já que {\sf v} é maior que {\sf u}), comparando dígito a dígito, do final para o início, com {\sf bsu}. Caso mais que um dígito diferente seja encontrado, a verifica\c{c}ão pára e retorna-se Falso, para indicar que os nodos não podem ser conectados por uma aresta.
 
 \subsection{Converter para Base 6}\label{sec:algoritmos:base6}
 

@@ -26,6 +26,11 @@
     "sec:estruturas"
     "fig:testeprof"
     "sec:algoritmos"
+    "sec:algoritmos:criar-nodos"
+    "sec:algoritmos:criar-arestas"
+    "sec:algoritmos:comparar"
+    "sec:algoritmos:base6"
+    "sec:algoritmos:calcular-tamanho-caminhos"
     "sec:algoritmos:achar-maior-caminho"
     "sec:resultados"
     "tab:resultados-1")
