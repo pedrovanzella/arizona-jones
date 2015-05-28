@@ -11,6 +11,7 @@
    (TeX-run-style-hooks
     "latex2e"
     "testeprof"
+    "testebobo"
     "article"
     "art12"
     "fontenc"
@@ -26,6 +27,7 @@
     "sec:estruturas"
     "fig:testeprof"
     "sec:entrada"
+    "fig:testebobo"
     "sec:algoritmos"
     "sec:algoritmos:criar-nodos"
     "sec:algoritmos:criar-arestas"

@@ -101,6 +101,36 @@ Como entrada temos arquivos que listam os números, em base 10, um por linha. Po
 
 Este arquivo de entrada é, por sinal, o que gera o grafo da Figura~\ref{fig:testeprof}.
 
+Uma seqüência mais complicada, como a seguinte, gera um grafo muito mais complicado, como o da Figura~\ref{fig:testebobo}
+\begin{lstlisting}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+\end{lstlisting}
+
+\begin{figure}[h!]
+  \begin{dot2tex}[neato,options=-tmath]
+    \input{testebobo.dot}
+  \end{dot2tex}
+  \caption{Exemplo de grafo mais complexo}
+  \label{fig:testebobo}
+\end{figure}
+
 \section{Algoritmos}\label{sec:algoritmos}
 Para resolver o problema, dividiu-se o programa em diferentes fun\c{c}ões, para facilitar a leitura e explica\c{c}ão.
 
