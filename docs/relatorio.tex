@@ -195,6 +195,44 @@ Uma lista de nodos é montada e retornada, contendo todos os nodos que possuem u
 % TODO: explicar melhor, talvez?
 
 \subsection{Achar Maior Caminho}\label{sec:algoritmos:achar-maior-caminho}
+\begin{lstlisting}
+achar_maior_caminho():
+   maior_peso = encontrar_maior_peso(pesos)
+   maior_caminho = [maior_peso]
+
+   vizinhos = vizinhos_que_chegam(maior_peso)
+
+   enquanto lenght(vizinhos) > 0:
+      maior_peso = encontrar_maior_peso(vizinhos)
+      maior_caminho = [maior_peso] + maior_caminho
+      vizinhos = vizinhos_que_chegam(maior_peso)
+
+   retorna maior_caminho
+\end{lstlisting}
+
+\subsection{Encontrar Maior Peso}\label{sec:algoritmos:encontrar-maior-peso}
+\begin{lstlisting}
+encontrar_maior_peso(pesos):
+   mais_pesado = pesos.primeiro()
+
+   para todo p em pesos:
+      se pesos[p] > pesos[mais_pesado]:
+         mais_pesado = pesos[p]
+
+   retorna mais_pesado
+\end{lstlisting}
+
+\subsection{Chamada Principal}\label{sec:algoritmos:main}
+\begin{lstlisting}
+main():
+    criar_nodos(arquivo)
+    criar_arestas()
+    para todo u em nodos:
+    calcular_tamanho_caminho(u)
+
+    maior_caminho = achar_maior_caminho()
+    imprime(maior_caminho, lenght(maior_caminho))
+\end{lstlisting}
 
 \section{Resultados}\label{sec:resultados}
 Obviamente o algoritmo é ruim. Mas quão ruim? Seria possível resolver o problema para uma entrada razoavel? A fim de curiosidade, o algorítmo foi implementado e os resultados podem ser vistos na Tabela~\ref{tab:resultados-1}.
