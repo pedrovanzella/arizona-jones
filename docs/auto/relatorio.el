@@ -25,13 +25,17 @@
     "sec:intro"
     "sec:estruturas"
     "fig:testeprof"
+    "sec:entrada"
     "sec:algoritmos"
     "sec:algoritmos:criar-nodos"
     "sec:algoritmos:criar-arestas"
     "sec:algoritmos:comparar"
     "sec:algoritmos:base6"
     "sec:algoritmos:calcular-tamanho-caminhos"
+    "sec:algoritmos:vizinhos-que-chegam"
     "sec:algoritmos:achar-maior-caminho"
+    "sec:algoritmos:encontrar-maior-peso"
+    "sec:algoritmos:main"
     "sec:resultados"
     "tab:resultados-1")
    (LaTeX-add-environments
