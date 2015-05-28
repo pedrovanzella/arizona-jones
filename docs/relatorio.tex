@@ -178,6 +178,21 @@ O algoritmo {\sf vizinhos\_que\_chegam()} é explicado na se\c{c}ão~\ref{sec:al
 % TODO: explicar melhor isto aqui
 
 \subsection{Vizinhos que Chegam}\label{sec:algoritmos:vizinhos-que-chegam}
+Este algoritmo tem como fun\c{c}ão encontrar todos os nodos que têm uma aresta que os conectam em {\sf u}.
+\begin{lstlisting}
+vizinhos_que_chegam(u):
+   lista = []
+   para todo v em nodos:
+      se existe_aresta(v, u):
+         lista.add(v)
+
+   retorna lista
+\end{lstlisting}
+
+Observe que {\sf existe\_aresta()} é chamado com os parâmetros invertidos, isto é, se existe uma aresta de {\sf v} para {\sf u}.
+Uma lista de nodos é montada e retornada, contendo todos os nodos que possuem uma aresta para {\sf u}.
+
+% TODO: explicar melhor, talvez?
 
 \subsection{Achar Maior Caminho}\label{sec:algoritmos:achar-maior-caminho}
 
