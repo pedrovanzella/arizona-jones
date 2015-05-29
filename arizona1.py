@@ -164,7 +164,8 @@ if __name__ == "__main__":
 
     print "Arizona Jones entrou no templo"
     print "Lendo o arquivo %s" % sys.argv[1]
-    a = arizona(make_graph=True)
+    #a = arizona(make_graph=True)
+    a = arizona()
     a.create_nodes(sys.argv[1])
 
     # Force conversion of all nodes
@@ -197,5 +198,5 @@ if __name__ == "__main__":
 
     # print "Populado:"
     # pp.pprint(a.pesos)
-    print "Imprimindo grafo"
-    a.graph.write("docs/" + sys.argv[1] + ".dot")
+    #print "Imprimindo grafo"
+    #a.graph.write("docs/" + sys.argv[1] + ".dot")

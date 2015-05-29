@@ -309,22 +309,15 @@ O próximo passo é iterar por todos os nodos, calculando o tamanho do maior cam
 Uma vez feito isso, podemos facilmente encontrar o maior caminho. O algorimto da se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho} retorna uma lista. Guardamos esta para podermos imprimí-la, junto de seu tamanho, dando a resposta do problema.
 
 \section{Resultados}\label{sec:resultados}
-Obviamente o algoritmo é ruim. Mas quão ruim? Seria possível resolver o problema para uma entrada razoavel? A fim de curiosidade, o algorítmo foi implementado e os resultados podem ser vistos na Tabela~\ref{tab:resultados-1}.
 
 \begin{table}[h]
-\caption{Primeira Tentativa}
+\caption{Resultados}
 \label{tab:resultados-1}
-\begin{tabular}{ll}
-  {\sf num} & Tempo (s) \\
+\begin{tabular}{c | c || c | c}
+  Entrada & Tempo (s) & Caminho & Tamanho \\
+  \hline \hline
+  teste0200b & 0.23 & 7268 7484 & 2 \\
   \hline
-  2 & 0.01 \\
-  3 & 0.01 \\
-  4 & 0.01 \\
-  5 & 0.02 \\
-  6 & 0.09 \\
-  7 & 1.25 \\
-  8 & 23.9 \\
-  9 & 540.9    
 \end{tabular}
 \end{table}
 
