@@ -18,10 +18,11 @@
     "algorithm2e"
     "dot2texi"
     "tikz"
+    "listings"
+    "float"
     "sbc-template"
     "babel"
-    "inputenc"
-    "listings")
+    "inputenc")
    (LaTeX-add-labels
     "sec:intro"
     "sec:estruturas"
