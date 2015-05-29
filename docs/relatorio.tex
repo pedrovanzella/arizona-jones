@@ -246,22 +246,33 @@ Uma lista de nodos é montada e retornada, contendo todos os nodos que possuem u
 % TODO: explicar melhor, talvez?
 
 \subsection{Achar Maior Caminho}\label{sec:algoritmos:achar-maior-caminho}
+A idéia desde algoritmo é simples: já que já temos o tamanho do maior caminho que passa em cada nodo (dado pelo algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:calcular-tamanho-caminhos}, podemos usar isto para encontrar o maior caminho, nodo a nodo.
+
 \begin{lstlisting}
 achar_maior_caminho():
    maior_peso = encontrar_maior_peso(pesos)
-   maior_caminho = [maior_peso]
+   maior_caminho = []
+   maior_caminho.add(maior_peso)
 
    vizinhos = vizinhos_que_chegam(maior_peso)
 
    enquanto lenght(vizinhos) > 0:
       maior_peso = encontrar_maior_peso(vizinhos)
-      maior_caminho = [maior_peso] + maior_caminho
+      maior_caminho.add(maior_peso)
       vizinhos = vizinhos_que_chegam(maior_peso)
 
    retorna maior_caminho
 \end{lstlisting}
 
+Primeiro pegamos o nodo de maior peso (o algoritmo {\sf encontrar\_maior\_peso()} é descrito na se\c{c}ão~\ref{sec:algoritmos:encontrar-maior-peso}) e adicionamos ele a uma lista vazia. Para os fins deste algoritmo, vamos considerar que {\sf List.add()} adiciona um elemento ao início da lista. Caso ele adicione ao fim, basta inverter a ordem dos elementos ao fim do algoritmo.
+
+Em seguida, escolhe-se dentre os nodos que chegam neste que acabamos de encontrar o de maior peso. Isto é, pode haver vários caminhos que passam por um nodo, mas estamos escolhendo aquele com mais nodos. Adiciona-se este nodo ao início da lista e repete-se o processo para ele, até que não haja nodos com arestas apontando para ele.
+
+% TODO: Complexidade?
+
 \subsection{Encontrar Maior Peso}\label{sec:algoritmos:encontrar-maior-peso}
+Este algoritmo é muito simples: itera-se por uma lista de nodos, achando o de maior peso entre eles. Os detalhes de implementa\c{c}ão podem variar um pouco de linguagem para linguagem. Por exemplo, uma linguagem que permita filtrar dicionários pode tornar este algoritmo mais fácil de se implementar; uma linguagem mais fortemente tipada pode apresentar algum outro obstáculo.
+
 \begin{lstlisting}
 encontrar_maior_peso(pesos):
    mais_pesado = pesos.primeiro()
@@ -273,7 +284,11 @@ encontrar_maior_peso(pesos):
    retorna mais_pesado
 \end{lstlisting}
 
+De qualquer forma, o único requisito é que este algoritmo receba uma lista de apenas alguns nodos (que são filtrados pelo algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho} utilizando o algoritmo da se\c{c}ão~\ref{sec:algoritmos:vizinhos-que-chegam}), e retornar apenas um nodo - o de maior peso.
+
 \subsection{Chamada Principal}\label{sec:algoritmos:main}
+Agora que temos o algoritmo bem dividido, podemos chamá-lo em poucas etapas:
+
 \begin{lstlisting}
 main():
     criar_nodos(arquivo)
@@ -284,6 +299,14 @@ main():
     maior_caminho = achar_maior_caminho()
     imprime(maior_caminho, lenght(maior_caminho))
 \end{lstlisting}
+
+Primeiro cria-se os nodos a partir de um arquivo, como visto na se\c{c}ão~\ref{sec:algoritmos:criar-nodos}. Este arquivo deve ser passado para o programa de alguma maneira, como pelos parâmetros de linha de comando.
+
+Em seguida, criamos as arestas. O algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:criar-arestas} utiliza-se dos nodos já criados para isto.
+
+O próximo passo é iterar por todos os nodos, calculando o tamanho do maior caminho até aquele nodo, como visto na se\c{c}ão~\ref{sec:algoritmos:calcular-tamanho-caminhos}.
+
+Uma vez feito isso, podemos facilmente encontrar o maior caminho. O algorimto da se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho} retorna uma lista. Guardamos esta para podermos imprimí-la, junto de seu tamanho, dando a resposta do problema.
 
 \section{Resultados}\label{sec:resultados}
 Obviamente o algoritmo é ruim. Mas quão ruim? Seria possível resolver o problema para uma entrada razoavel? A fim de curiosidade, o algorítmo foi implementado e os resultados podem ser vistos na Tabela~\ref{tab:resultados-1}.
