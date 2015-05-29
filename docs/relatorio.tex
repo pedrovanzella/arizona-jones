@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{float}
 \usetikzlibrary{shapes,arrows}
+\usepackage{bchart}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
@@ -313,7 +314,7 @@ Uma vez feito isso, podemos facilmente encontrar o maior caminho. O algorimto da
 \begin{table}[h]
 \caption{Resultados}
 \label{tab:resultados-1}
-\begin{tabular}{c | c || l | c}
+\begin{tabular}{c | c || p{8cm} | c}
   Entrada & Tempo (s) & Caminho & Tamanho \\
   \hline \hline
   teste0200b & 0.23 & 7268 7484 & 2 \\
@@ -367,7 +368,5 @@ Uma vez feito isso, podemos facilmente encontrar o maior caminho. O algorimto da
   teste5000b & 132.73 & 1512 1944 7128 7344 7380 7488 7491 15267 15285 15291 15297 15299 & 12
 \end{tabular}
 \end{table}
-
-
 
 \end{document}

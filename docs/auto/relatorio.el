@@ -20,6 +20,7 @@
     "tikz"
     "listings"
     "float"
+    "bchart"
     "sbc-template"
     "babel"
     "inputenc")
