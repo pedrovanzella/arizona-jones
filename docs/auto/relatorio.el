@@ -41,7 +41,8 @@
     "sec:algoritmos:encontrar-maior-peso"
     "sec:algoritmos:main"
     "sec:resultados"
-    "tab:resultados-1")
+    "tab:resultados-1"
+    "fig:resultados")
    (LaTeX-add-environments
     '("lyxlist" 1))))
 
