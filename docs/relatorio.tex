@@ -58,16 +58,18 @@ Grande do Sul (PUCRS) \\ Av. Ipiranga, 6681 - Porto Alegre / RS / Brasil
 
 \section{Introdução}\label{sec:intro}
 
-O problema a ser resolvido consiste em encontrar, dentro de um conjunto de números, a maior seqüência crescente de números que, em base 6, têm somente um dígito de diferen\c{c}a entre um e outro.
+O problema a ser resolvido consiste em encontrar, dentro de um conjunto de números, a maior seqüência crescente de números que, em base 6, têm somente um dígito de diferen\c{c}a entre um e outro. 
 
 Por exemplo, no conjunto $782$ $229$ $446$ $527$ $874$ $19$ $829$ $70$ $830$ $992$ $430$ $649$, a maior seqüência é $649$ $829$ $830$.
+
+Para isto, os números são organizados em um grafo e o maior caminho é encontrado. Como veremos na se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho}, isto é uma opera\c{c}ão que roda em tempo linear, gra\c{c}as a algumas propriedades interessantes deste grafo.
 
 \section{Estruturas de Dados}\label{sec:estruturas}
 Vamos representar o conjunto de números como um grafo. Isto nos permitirá ligar os nodos que formam seqüências válidas e caminhar pelo grafo procurando o maior caminho entre todos.
 
-Para representar internamente o grafo, utilizamos três dicionários: um dicionário para nodos, um para vértices e um para o peso dos nodos. Este último será explicado em detalhe na se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho}.
+Para representar internamente o grafo, utilizamos três dicionários: um dicionário para nodos, um para arestas e um para o peso dos nodos. Este último será explicado em detalhe nas se\c{c}ões~\ref{sec:algoritmos:achar-maior-caminho} e~\ref{sec:algoritmos:calcular-tamanho-caminhos}.
 
-O dicionário de nodos tem uma propriedade interessante: seu índice é o número em base 10, como foi lido do arquivo; seu conteúdo é a representa\c{c}ão em base 6 do mesmo número, como um array de dígitos, para facilitar a compara\c{c}ão.
+O dicionário de nodos tem uma propriedade interessante: seu índice é o número em base 10, como foi lido do arquivo; seu conteúdo é a representa\c{c}ão em base 6 do mesmo número, como um array de dígitos, para facilitar a compara\c{c}ão. Esta representa\c{c}ão é guardada no array de modo a evitar o recálculo da conversão de base, trocando processamento por memória.
 
 Este grafo é dirigido e acíclico. Isto fica óbvio quando pensamos nos parâmetros do problema: se, para criar uma aresta, precisamos ligar um nodo a alguém maior que ele, não podemos ter ciclos (i.e. A não pode ser maior que B ao mesmo tempo que B é maior que A). Como veremos na se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho}, isto é muito bom para nós.
 
@@ -148,6 +150,8 @@ criar_nodos(arquivo):
 
 Onde {\sf []} é um \textit{array} vazio. Este array, nesta implementa\c{c}ão, conterá a representa\c{c}ão em base 6 do seu índice correspondente. Isto é feito para memorizar a conversão, já que este valor poderá ser testado várias vezes pelo algoritmo descrito na sessão~\ref{sec:algoritmos:comparar}.
 Veja que também inicializamos uma posi\c{c}ão no dicionário de pesos. Este peso será atualizado pelo algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:calcular-tamanho-caminhos}.
+
+Dentre as vantagens de utilizar-se um dicionário para armazenar os nodos, está o fato de que não precisamos nos preocupar com a existência ou não de um elemento ao inserí-lo - o dicionário cuida disso, internamente, e não teremos elementos repetidos. Além disso, o acesso a um elemento é $O(1)$, ou algo muito próximo disso. %TODO: Referência bibliográfica
 
 \subsection{Criar Arestas}\label{sec:algoritmos:criar-arestas}
 O algoritmo de criar arestas itera pelos nodos, conectando aqueles que podem formar uma seqüência válida para o problema.
