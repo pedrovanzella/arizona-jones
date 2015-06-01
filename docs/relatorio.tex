@@ -152,7 +152,7 @@ Onde {\sf []} é um \textit{array} vazio. Este array, nesta implementa\c{c}ão, 
 
 Veja que também inicializamos uma posi\c{c}ão no dicionário de pesos. Este peso será atualizado pelo algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:calcular-tamanho-caminhos}.
 
-Dentre as vantagens de utilizar-se um dicionário para armazenar os nodos, está o fato de que não precisamos nos preocupar com a existência ou não de um elemento ao inserí-lo - o dicionário cuida disso, internamente, e não teremos elementos repetidos. Além disso, o acesso a um elemento é $O(1)$, ou algo muito próximo disso. %TODO: Referência bibliográfica
+Dentre as vantagens de utilizar-se um dicionário para armazenar os nodos, está o fato de que não precisamos nos preocupar com a existência ou não de um elemento ao inserí-lo - o dicionário cuida disso, internamente, e não teremos elementos repetidos. Além disso, o acesso a um elemento é $O(1)$, ou algo muito próximo disso. Isto faz com que o custo deste algoritmo seja $O(n)$, onde $n$ é o número de linhas no arquivo de entrada. %TODO: Referência bibliográfica
 
 \subsection{Criar Arestas}\label{sec:algoritmos:criar-arestas}
 O algoritmo de criar arestas itera pelos nodos, conectando aqueles que podem formar uma seqüência válida para o problema.
@@ -167,7 +167,7 @@ criar_arestas():
 
 Há uma chamada para o algoritmo {\sf comparar()}, que é explicado na se\c{c}ão~\ref{sec:algoritmos:comparar}.
 
-Não é necessário testar todos os nodos contra todos, no entanto. Como somente seqüências crescentes podem ser geradas, filtramos {\sf v} para ser maior que {\sf u}. Ainda assim, este algoritmo roda em $O(n^2)$. % TODO: explicar
+Não é necessário testar todos os nodos contra todos, no entanto. Como somente seqüências crescentes podem ser geradas, filtramos {\sf v} para ser maior que {\sf u}. Ainda assim, este algoritmo roda em $O(n^2)$, sendo $n$ o número de nodos no grafo.
 
 O conteúdo do dicionário de arestas não é importante. O valor dele pode, portanto, ser qualquer um. Aqui setamos para {\sf Verdadeiro} por conveniência durante os testes de existência de aresta.
 
@@ -200,14 +200,18 @@ comparar(u, v):
 \end{lstlisting}
 
 Aqui vemos uma chamada para a fun\c{c}ão {\sf base6()}, que será explicada na se\c{c}ão~\ref{sec:algoritmos:base6}.
+
 Há também uma chamada para {\sf pad()}. Esta fun\c{c}ão apenas adiciona zeros à esquerda de seu primeiro argumento até que ele fique com o tamanho de seu segundo argumento. Isto nos permite testar números que têm uma quantidade de dígitos diferentes.
+
 Como um número pode diferir de outro em um dígito quando representados em base 6, temos duas op\c{c}ões: todos os dígitos são iguais, mas um dígito novo é adicionado à esquerda do menor (\textit{e.g.} $231_6$ e $1231_6$) ou a quantidade de dígitos é a mesma, mas apenas um dígito é diferente entre ambos os números (\textit{e.g.} $231_6$ e $232_6$).
 
-O algoritmo também verifica se {\sf v} é maior que {\sf u}. Esta é um teste de sanidade apenas, já que o algoritmo de Criar Arestas (se\c{c}ão~\ref{sec:algoritmos:criar-arestas} só chama o algoritmo de Comparar para {\sf v}s maiores que {\sf u}.
+O algoritmo também verifica se {\sf v} é maior que {\sf u}. Este é um teste de sanidade apenas, já que o algoritmo {\sf criar\_arestas()} (se\c{c}ão~\ref{sec:algoritmos:criar-arestas}) só chama o algoritmo {\sf comparar()} para {\sf v}s maiores que {\sf u}.
 
-Outra verifica\c{c}ão é feita antes de se testar todos os dígitos, comparando os tamanhos dos dois \textit{arrays} de números em base 6. Se a diferen\c{c}a é maior que 1, há garantidamente mais que um dígito diferente também, e estes nodos não podem ser conectados. Esta verifica\c{c}ão é interessante porque pode rodar em tempo constante, dependendo de como a linguagem representa \textit{arrays}. Em uma linguagem como C, no entanto, não há vantagem.
+Outra verifica\c{c}ão é feita antes de se testar todos os dígitos, comparando os tamanhos dos dois \textit{arrays} de números em base 6. Se a diferen\c{c}a é maior que 1, há garantidamente mais que um dígito diferente também, e estes nodos não podem ser conectados. Esta verifica\c{c}ão é interessante porque pode rodar em tempo constante, dependendo de como a linguagem representa \textit{arrays}. Em uma linguagem que não guarde o tamanho do \textit{array} como propriedade do mesmo, não há vantagens, no entanto.
 
 Após estas verifica\c{c}ões, itera-se pelo maior \textit{array} (que é garantidamente {\sf bsv}, já que {\sf v} é maior que {\sf u}), comparando dígito a dígito, do final para o início, com {\sf bsu}. Caso mais que um dígito diferente seja encontrado, a verifica\c{c}ão pára e retorna-se Falso, para indicar que os nodos não podem ser conectados por uma aresta.
+
+Esta fun\c{c}ão é $O(u)$, mas como $u$ é tão pequeno, comparado, pro exemplo, ao número de nodos no grafo, podemos desconsiderar seu custo nos cálculos posteriores, como se fosse $O(1)$.
 
 \subsection{Converter para Base 6}\label{sec:algoritmos:base6}
 A conversão para base 6 em si não é importante - ela pode ser realizada por uma fun\c{c}ão de alguma biblioteca, ou manualmente com matemática simples. O que é importante aqui é a memoriza\c{c}ão do resultado.
