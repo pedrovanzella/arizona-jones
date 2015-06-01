@@ -329,7 +329,9 @@ Na Tabela~\ref{tab:resultados-1} podemos ver as saídas do algoritmo, junto do s
 
 Como vimos na se\c{c}ão~\ref{sec:algoritmos:criar-arestas}, temos um algoritmo que roda em $O(n^2)$, enquanto outros rodam em tempo linear ou melhor. Isto dá uma complexidade total de $O(n^2)$ para a solu\c{c}ão.
 
-Podemos ver na Figura~\ref{fig:resultados} um gráfico relacionando tamanho da entrada com tempo de execu\c{c}ão.
+Podemos ver na Figura~\ref{fig:resultados} um gráfico relacionando tamanho da entrada com tempo de execu\c{c}ão. De fato, isto corrobora o resultado de $O(n^2)$ - o gráfico se assemelha a uma parábola.
+
+É importante notar que, enquanto o gargalo se encontra no algoritmo {\sf criar\_arestas()}, descrito na se\c{c}ão~\ref{sec:algoritmos:criar-arestas}, este apenas está preparando o terreno para o problema ser resolvido. A solu\c{c}ão do problema, dada na se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho}, é linear. Ainda assim, sem este primeiro passo, não seria possível resolver o problema. Este é um bom candidato para otimiza\c{c}ões futuras.
 
 \begin{table}[h]
 \caption{Resultados}
