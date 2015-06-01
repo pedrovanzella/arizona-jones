@@ -149,12 +149,14 @@ criar_nodos(arquivo):
 \end{lstlisting}
 
 Onde {\sf []} é um \textit{array} vazio. Este array, nesta implementa\c{c}ão, conterá a representa\c{c}ão em base 6 do seu índice correspondente. Isto é feito para memorizar a conversão, já que este valor poderá ser testado várias vezes pelo algoritmo descrito na sessão~\ref{sec:algoritmos:comparar}.
+
 Veja que também inicializamos uma posi\c{c}ão no dicionário de pesos. Este peso será atualizado pelo algoritmo descrito na se\c{c}ão~\ref{sec:algoritmos:calcular-tamanho-caminhos}.
 
 Dentre as vantagens de utilizar-se um dicionário para armazenar os nodos, está o fato de que não precisamos nos preocupar com a existência ou não de um elemento ao inserí-lo - o dicionário cuida disso, internamente, e não teremos elementos repetidos. Além disso, o acesso a um elemento é $O(1)$, ou algo muito próximo disso. %TODO: Referência bibliográfica
 
 \subsection{Criar Arestas}\label{sec:algoritmos:criar-arestas}
 O algoritmo de criar arestas itera pelos nodos, conectando aqueles que podem formar uma seqüência válida para o problema.
+
 \begin{lstlisting}
 criar_arestas():
    para todo u em nodos:
@@ -164,8 +166,12 @@ criar_arestas():
 \end{lstlisting}
 
 Há uma chamada para o algoritmo {\sf comparar()}, que é explicado na se\c{c}ão~\ref{sec:algoritmos:comparar}.
-Não é necessário testar todos os nodos contra todos, no entanto. Como somente seqüências crescentes podem ser geradas, filtramos {\sf v} para ser maior que {\sf u}.
-O conteúdo do dicionário de arestas não é importante. O valor dele pode, portanto, ser qualquer um.
+
+Não é necessário testar todos os nodos contra todos, no entanto. Como somente seqüências crescentes podem ser geradas, filtramos {\sf v} para ser maior que {\sf u}. Ainda assim, este algoritmo roda em $O(n^2)$. % TODO: explicar
+
+O conteúdo do dicionário de arestas não é importante. O valor dele pode, portanto, ser qualquer um. Aqui setamos para {\sf Verdadeiro} por conveniência durante os testes de existência de aresta.
+
+Note também que, em {\sf arestas[u,v]}, {\sf u,v} deve ser a concatena\c{c}ão de {\sf u}, uma vírgula e {\sf v}, formando uma string como {\sf 123,124}. Algumas linguagens podem permitir outros formatos, mas este é mais garantido para a maioria delas.
 
 \subsection{Comparar}\label{sec:algoritmos:comparar}
 Esta fun\c{c}ão compara dois índices, {\sf u} e {\sf v}, retornando um booleano que indica se {\sf u} pode ser ligado a {\sf v} através de uma aresta.
