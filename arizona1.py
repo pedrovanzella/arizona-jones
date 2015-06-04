@@ -144,13 +144,15 @@ class arizona(object):
 
         maior_peso = self.encontra_maior_peso(self.pesos)
         # print "(%r,%r)" % (maior_peso, self.pesos[maior_peso])
-        self.longest_path = [(maior_peso, self.nodes[maior_peso])]
+        #self.longest_path = [(maior_peso, self.nodes[maior_peso])]
+        self.longest_path = [maior_peso]
 
         vizinhos = self.vizinhos_que_chegam(maior_peso)
         while len(vizinhos) > 0:
             maior_peso = self.encontra_maior_peso(vizinhos)
             # print "(%r,%r)" % (maior_peso, self.pesos[maior_peso])
-            self.longest_path = [(maior_peso, self.nodes[maior_peso])] + self.longest_path
+            #self.longest_path = [(maior_peso, self.nodes[maior_peso])] + self.longest_path
+            self.longest_path = [maior_peso] + self.longest_path
             vizinhos = self.vizinhos_que_chegam(maior_peso)
 
         return self.longest_path
