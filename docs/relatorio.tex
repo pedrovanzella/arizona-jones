@@ -242,6 +242,8 @@ calcular_tamanho_caminho(u):
 
 O algoritmo {\sf vizinhos\_que\_chegam()} é explicado na se\c{c}ão~\ref{sec:algoritmos:vizinhos-que-chegam}.
 
+Vemos na Figura~\ref{fig:grafos:pesos} os grafos com os pesos calculados entre parênteses.
+
 \begin{figure}
   \noindent %
   \begin{minipage}{0.45\linewidth}
@@ -302,7 +304,9 @@ achar_maior_caminho():
 
 Primeiro pegamos o nodo de maior peso (o algoritmo {\sf encontrar\_maior\_peso()} é descrito na se\c{c}ão~\ref{sec:algoritmos:encontrar-maior-peso}) e adicionamos ele a uma lista vazia. Para os fins deste algoritmo, vamos considerar que {\sf List.add()} adiciona um elemento ao início da lista. Caso ele adicione ao fim, basta inverter a ordem dos elementos ao fim do algoritmo.
 
-Em seguida, escolhe-se dentre os nodos que chegam neste que acabamos de encontrar o de maior peso. Isto é, pode haver vários caminhos que passam por um nodo, mas estamos escolhendo aquele com mais nodos. Adiciona-se este nodo ao início da lista e repete-se o processo para ele, até que não haja nodos com arestas apontando para ele.
+Em seguida, escolhe-se dentre os nodos que chegam neste que acabamos de encontrar o de maior peso. Isto é, pode haver vários caminhos que passam por um nodo, mas estamos escolhendo aquele com mais nodos. Adiciona-se este nodo ao início da lista e repete-se o processo para ele, até que não haja nodos com arestas apontando para ele. 
+
+Podemos ver na Figura~\ref{fig:grafos:pesos} estes pesos. A idéia intuitiva do algoritmo é escolher o nodo de maior peso, e seguir as setas no sentido oposto, sempre em direção ao nodo de maior peso.
 
 % TODO: Complexidade?
 
