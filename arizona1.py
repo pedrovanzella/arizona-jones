@@ -31,9 +31,11 @@ class arizona(object):
         bsu = self.base6(u)
         bsv = self.base6(v)
 
-        digitos_diferentes = 0
+        if len(bsu) != len(bsv):
+            # Não posso adicionar nem remover dígitos
+            return False
 
-        bsu = self.pad(bsu, len(bsv))
+        digitos_diferentes = 0
 
         for i in range(0, len(bsv)):
             if bsu[-i] != bsv[-i]:
@@ -52,20 +54,18 @@ class arizona(object):
     def base6(self, num):
         """Retorna uma representação em base 6 do número em um array"""
         n = int(num)
-        if self.nodes[num] == []:
-            base6 = BaseConverter('012345')
-            num6 = base6.encode(n)
-            self.nodes[num] = map(int, num6)
-        return self.nodes[num]
+        base6 = BaseConverter('012345')
+        return base6.encode(n)
 
     def create_nodes(self, file):
         """Lê um arquivo e cria um nodo para cada linha diferente"""
         with open(file) as f:
             for line in f:
-                self.nodes[line.rstrip()] = []
-                self.pesos[line.rstrip()] = 0
+                l = line.rstrip()
+                self.nodes[l] = self.base6(l)
+                self.pesos[l] = 0
                 if self.make_graph:
-                    self.graph.add_node(line.rstrip())
+                    self.graph.add_node(l)
 
     def create_edges(self):
         """A partir dos nodos, cria vértices que respeitem as regras"""
