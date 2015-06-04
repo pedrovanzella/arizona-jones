@@ -113,35 +113,47 @@ Podemos ver na Figura~\ref{fig:testeprof} um grafo gerado de acordo com o exempl
 \section{Entrada}\label{sec:entrada}
 Como entrada temos arquivos que listam os números, em base 10, um por linha. Por exemplo, o arquivo da Figura~\ref{fig:testeprof}
 
-Uma seqüência mais complicada, como a seguinte, gera um grafo muito mais complicado, como o da Figura~\ref{fig:testebobo}
-\begin{lstlisting}
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-\end{lstlisting}
-
-\begin{figure}[h!]
-  \begin{dot2tex}[neato,options=-tmath]
-    \input{testebobo.dot}
-  \end{dot2tex}
-  \caption{Exemplo de grafo mais complexo}
+Uma seqüência mais complicada, como a da Figura~\ref{fig:testebobo:entrada}, gera um grafo muito mais complicado, como o da Figura~\ref{fig:testebobo:grafo}
+\begin{figure}[H]
+  \begin{minipage}[t]{0.3\columnwidth}
+    \begin{figure}
+        \begin{lstlisting}
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+            10
+            11
+            12
+            13
+            14
+            15
+            16
+            17
+            18
+        \end{lstlisting}
+      \caption{Arquivo de Entrada}
+      \label{fig:testebobo:entrada}
+    \end{figure}
+  \end{minipage}%
+  \begin{minipage}[t][1\totalheight][b]{0.65\textwidth}%
+    \begin{figure}[h!]
+    \begin{dot2tex}[neato,options=-tmath]
+        \input{testebobo.dot}
+    \end{dot2tex}
+    \caption{Exemplo de grafo mais complexo}
+    \label{fig:testebobo:grafo}
+    \end{figure}
+  \end{minipage}
+  \caption{Outra entrada e grafo}
   \label{fig:testebobo}
 \end{figure}
+
 
 \section{Algoritmos}\label{sec:algoritmos}
 Para resolver o problema, dividiu-se o programa em diferentes fun\c{c}ões, para facilitar a leitura e explica\c{c}ão.

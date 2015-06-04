@@ -31,6 +31,8 @@
     "fig:testeprof:grafo"
     "fig:testeprof"
     "sec:entrada"
+    "fig:testebobo:entrada"
+    "fig:testebobo:grafo"
     "fig:testebobo"
     "sec:algoritmos"
     "sec:algoritmos:criar-nodos"
