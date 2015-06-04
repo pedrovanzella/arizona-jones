@@ -38,7 +38,7 @@ class arizona(object):
         digitos_diferentes = 0
 
         for i in range(0, len(bsv)):
-            if bsu[-i] != bsv[-i]:
+            if bsu[i] != bsv[i]:
                 digitos_diferentes += 1
             if digitos_diferentes > 1:
                 return False
@@ -166,8 +166,8 @@ if __name__ == "__main__":
 
     print "Arizona Jones entrou no templo"
     print "Lendo o arquivo %s" % sys.argv[1]
-    #a = arizona(make_graph=True)
-    a = arizona()
+    a = arizona(make_graph=True)
+    #a = arizona()
     a.create_nodes(sys.argv[1])
 
     # Force conversion of all nodes
