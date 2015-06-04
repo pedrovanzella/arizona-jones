@@ -130,6 +130,9 @@ class arizona(object):
             if self.pesos[v] > self.pesos[u]:
                 self.pesos[u] = self.pesos[v] + 1
 
+        #if self.make_graph:
+        #    n = self.graph.get_node(u)
+        #    n.attr['label'] = self.pesos[u]
         return self.pesos[u]
 
 
@@ -166,8 +169,8 @@ if __name__ == "__main__":
 
     print "Arizona Jones entrou no templo"
     print "Lendo o arquivo %s" % sys.argv[1]
-    #a = arizona(make_graph=True)
-    a = arizona()
+    a = arizona(make_graph=True)
+    #a = arizona()
     a.create_nodes(sys.argv[1])
 
     # Force conversion of all nodes
@@ -200,5 +203,5 @@ if __name__ == "__main__":
 
     # print "Populado:"
     # pp.pprint(a.pesos)
-    #print "Imprimindo grafo"
-    #a.graph.write("docs/" + sys.argv[1] + ".dot")
+    print "Imprimindo grafo"
+    a.graph.write("docs/" + sys.argv[1] + ".dot")
