@@ -76,7 +76,6 @@ Podemos ver na Figura~\ref{fig:testeprof} um grafo gerado de acordo com o exempl
 \begin{figure}[H]
   \noindent %
   \begin{minipage}[t]{0.3\columnwidth}%
-    \begin{figure}
         \begin{lstlisting}
         782
         229
@@ -93,16 +92,13 @@ Podemos ver na Figura~\ref{fig:testeprof} um grafo gerado de acordo com o exempl
         \end{lstlisting}
         \caption{Arquivo de Entrada}
         \label{fig:testeprof:entrada}
-      \end{figure}
   \end{minipage}
   \begin{minipage}[t][1\totalheight][b]{0.65\textwidth}%
-    \begin{figure}
         \begin{dot2tex}[neato,options=-tmath]
             \input{testeprof.dot}
         \end{dot2tex}
         \caption{Exemplo de grafo gerado}
         \label{fig:testeprof:grafo}
-    \end{figure}
   \end{minipage}
   \caption{Entrada e grafo}
   \label{fig:testeprof}
@@ -114,7 +110,6 @@ Como entrada temos arquivos que listam os números, em base 10, um por linha. Po
 Uma seqüência mais complicada, como a da Figura~\ref{fig:testebobo:entrada}, gera um grafo muito mais complicado, como o da Figura~\ref{fig:testebobo:grafo}
 \begin{figure}[H]
   \begin{minipage}[t]{0.3\columnwidth}
-    \begin{figure}
         \begin{lstlisting}
             1
             2
@@ -137,16 +132,13 @@ Uma seqüência mais complicada, como a da Figura~\ref{fig:testebobo:entrada}, g
         \end{lstlisting}
       \caption{Arquivo de Entrada}
       \label{fig:testebobo:entrada}
-    \end{figure}
   \end{minipage}%
   \begin{minipage}[t][1\totalheight][b]{0.65\textwidth}%
-    \begin{figure}[h!]
     \begin{dot2tex}[neato,options=-tmath]
         \input{testebobo.dot}
     \end{dot2tex}
     \caption{Exemplo de grafo mais complexo}
     \label{fig:testebobo:grafo}
-    \end{figure}
   \end{minipage}
   \caption{Outra entrada e grafo}
   \label{fig:testebobo}
@@ -353,58 +345,58 @@ Podemos ver na Figura~\ref{fig:resultados} um gráfico relacionando tamanho da e
 \begin{table}[h]
 \caption{Resultados}
 \label{tab:resultados-1}
-\begin{tabular}{c | c || p{8cm} | c}
+\begin{tabular}{c | c || p{9cm} | c}
   Entrada & Tempo (s) & Caminho (base 10) & Tamanho \\
   \hline \hline
-  teste0200b & 0.57 & ['7268', '7484'] & 2 \\
+  teste0200b & 0.57 & [7268, 7484] & 2 \\
   \hline
-  teste0400b & 2.03 & ['10478', '10490', '11138', '11144', '11147'] & 5 \\
+  teste0400b & 2.03 & [10478, 10490, 11138, 11144, 11147] & 5 \\
   \hline
-  teste0600b & 4.64 & ['4981', '5053', '5071', '7663', '7735', '7771'] & 6 \\
+  teste0600b & 4.64 & [4981, 5053, 5071, 7663, 7735, 7771] & 6 \\
   \hline
-  teste0800b & 8.08 & ['4069', '4087', '4303', '4304', '4736', '4738'] & 6 \\
+  teste0800b & 8.08 & [4069, 4087, 4303, 4304, 4736, 4738] & 6 \\
   \hline
-  teste1000b & 12.93 & ['19050', '19062', '19067', '19103'] & 4 \\
+  teste1000b & 12.93 & [19050, 19062, 19067, 19103] & 4 \\
   \hline
-  teste1200b & 17.98 & ['7777', '12961', '13825', '13831', '13833', '13905', '13977', '13989'] & 8 \\
+  teste1200b & 17.98 & [7777, 12961, 13825, 13831, 13833, 13905, 13977, 13989] & 8 \\
   \hline
-  teste1400b & 24.89 & ['2682', '5274', '5275', '6355', '6391', '6403', '6439'] & 7 \\
+  teste1400b & 24.89 & [2682, 5274, 5275, 6355, 6391, 6403, 6439] & 7 \\
   \hline
-  teste1600b & 31.62 & ['9073', '9079', '11671', '14263', '15343', '15361', '15505', '15506', '15507'] & 9 \\
+  teste1600b & 31.62 & [9073, 9079, 11671, 14263, 15343, 15361, 15505, 15506, 15507] & 9 \\
   \hline
-  teste1800b & 40.19 & ['17676', '17694', '18990', '18993', '18994', '18995'] & 6 \\
+  teste1800b & 40.19 & [17676, 17694, 18990, 18993, 18994, 18995] & 6 \\
   \hline
-  teste2000b & 50.37 & ['4752', '4758', '4938', '6234', '6238', '6250', '6262'] & 7 \\
+  teste2000b & 50.37 & [4752, 4758, 4938, 6234, 6238, 6250, 6262] & 7 \\
   \hline
-  teste2200b & 62.40 & ['10765', '11629', '14221', '14233', '14234', '14246'] & 6 \\
+  teste2200b & 62.40 & [10765, 11629, 14221, 14233, 14234, 14246] & 6 \\
   \hline
-  teste2400b & 72.67 & ['14023', '14025', '14037', '14039'] & 4 \\
+  teste2400b & 72.67 & [14023, 14025, 14037, 14039] & 4 \\
   \hline
-  teste2600b & 85.00 & ['10441', '10513', '13105', '13321', '13969', '14005', '14035', '14036', '14038'] & 9 \\
+  teste2600b & 85.00 & [10441, 10513, 13105, 13321, 13969, 14005, 14035, 14036, 14038] & 9 \\
   \hline
-  teste2800b & 98.61 & ['9186', '9402', '9618', '9619', '10267', '10273', '10291', '15475', '15511', '15515'] & 10 \\
+  teste2800b & 98.61 & [9186, 9402, 9618, 9619, 10267, 10273, 10291, 15475, 15511, 15515] & 10 \\
   \hline
-  teste3000b & 114.79 & ['2593', '5185', '5186', '6266', '6272', '6275', '6299', '7595', '7775'] & 9 \\
+  teste3000b & 114.79 & [2593, 5185, 5186, 6266, 6272, 6275, 6299, 7595, 7775] & 9 \\
   \hline
-  teste3200b & 127.83 & ['1536', '4128', '4134', '4998', '5178', '7770', '7772', '7775'] & 8 \\
+  teste3200b & 127.83 & [1536, 4128, 4134, 4998, 5178, 7770, 7772, 7775] & 8 \\
   \hline
-  teste3400b & 159.95 & ['15481', '15499', '15511', '15515'] & 4 \\
+  teste3400b & 159.95 & [15481, 15499, 15511, 15515] & 4 \\
   \hline
-  teste3600b & 188.53 & ['6696', '6697', '6769', '6770', '6776', '6812', '7676', '7678', '7684', '7702', '7774', '7775'] & 12 \\
+  teste3600b & 188.53 & [6696, 6697, 6769, 6770, 6776, 6812, 7676, 7678, 7684, 7702, 7774, 7775] & 12 \\
   \hline
-  teste3800b & 211.33 & ['2592', '5184', '6480', '6696', '7128', '7164', '7380', '7416', '7422', '7530', '7536', '7548', '7554', '7556', '7558'] & 15 \\
+  teste3800b & 211.33 & [2592, 5184, 6480, 6696, 7128, 7164, 7380, 7416, 7422, 7530, 7536, 7548, 7554, 7556, 7558] & 15 \\
   \hline
-  teste4000b & 246.60 & ['11562', '14154', '15450', '15486', '15487', '15493', '15505', '15506', '15507', '15543'] & 10 \\
+  teste4000b & 246.60 & [11562, 14154, 15450, 15486, 15487, 15493, 15505, 15506, 15507, 15543] & 10 \\
   \hline
-  teste4200b & 257.68 & ['13176', '13212', '13428', '13429', '13861', '15157', '15175', '15319', '15331', '15334', '15335'] & 11 \\
+  teste4200b & 257.68 & [13176, 13212, 13428, 13429, 13861, 15157, 15175, 15319, 15331, 15334, 15335] & 11 \\
   \hline
-  teste4400b & 268.31 & ['11232', '11233', '15121', '15337', '15373', '15374', '15380', '15452', '15470', '15476', '15478', '15550'] & 12 \\
+  teste4400b & 268.31 & [11232, 11233, 15121, 15337, 15373, 15374, 15380, 15452, 15470, 15476, 15478, 15550] & 12 \\
   \hline
-  teste4600b & 318.01 & ['4608', '4644', '4716', '7308', '7314', '7316', '7318', '7319', '7343'] & 9 \\
+  teste4600b & 318.01 & [4608, 4644, 4716, 7308, 7314, 7316, 7318, 7319, 7343] & 9 \\
   \hline
-  teste4800b & 319.67 & ['15532', '15533'] & 2 \\
+  teste4800b & 319.67 & [15532, 15533] & 2 \\
   \hline
-  teste5000b & 365.95 & ['15157', '15193', '15265', '15267', '15285', '15291', '15297', '15299'] & 8
+  teste5000b & 365.95 & [15157, 15193, 15265, 15267, 15285, 15291, 15297, 15299] & 8
 \end{tabular}
 \end{table}
 
