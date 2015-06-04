@@ -28,8 +28,8 @@ class arizona(object):
         em base 6 é alterado"""
         if int(v) < int(u):
             return False
-        bsu = self.base6(u)
-        bsv = self.base6(v)
+        bsu = self.nodes[u]
+        bsv = self.nodes[v]
 
         if len(bsu) != len(bsv):
             # Não posso adicionar nem remover dígitos
