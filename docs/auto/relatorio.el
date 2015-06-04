@@ -27,6 +27,8 @@
    (LaTeX-add-labels
     "sec:intro"
     "sec:estruturas"
+    "fig:testeprof:entrada"
+    "fig:testeprof:grafo"
     "fig:testeprof"
     "sec:entrada"
     "fig:testebobo"

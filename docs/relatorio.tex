@@ -48,9 +48,6 @@ Grande do Sul (PUCRS) \\ Av. Ipiranga, 6681 - Porto Alegre / RS / Brasil
 \begin{document}
 
 \maketitle
-\begin{abstract}
-  A solution for the Arizona Jones in the Tel Dor Temple is proposed.
-\end{abstract}
 \begin{resumo}
   Uma solu\c{c}ão para o problema do Arizona Jones no Templo de Tel Dor é proposta.
 \end{resumo}
@@ -78,32 +75,43 @@ Este grafo é dirigido e acíclico. Isto fica óbvio quando pensamos nos parâme
 
 Podemos ver na Figura~\ref{fig:testeprof} um grafo gerado de acordo com o exemplo dado na se\c{c}ão~\ref{sec:intro}
 
-\begin{figure}[h!]
-    \begin{dot2tex}[neato,options=-tmath]
-        \input{testeprof.dot}
-    \end{dot2tex}
-    \caption{Exemplo de grafo}
-    \label{fig:testeprof}
+\begin{figure}[H]
+  \noindent %
+  \begin{minipage}[t]{0.3\columnwidth}%
+    \begin{figure}
+        \begin{lstlisting}
+        782
+        229
+        446
+        527
+        874
+        19
+        829
+        70
+        830
+        992
+        430
+        649
+        \end{lstlisting}
+        \caption{Arquivo de Entrada}
+        \label{fig:testeprof:entrada}
+      \end{figure}
+  \end{minipage}
+  \begin{minipage}[t][1\totalheight][b]{0.65\textwidth}%
+    \begin{figure}
+        \begin{dot2tex}[neato,options=-tmath]
+            \input{testeprof.dot}
+        \end{dot2tex}
+        \caption{Exemplo de grafo gerado}
+        \label{fig:testeprof:grafo}
+    \end{figure}
+  \end{minipage}
+  \caption{Entrada e grafo}
+  \label{fig:testeprof}
 \end{figure}
 
 \section{Entrada}\label{sec:entrada}
-Como entrada temos arquivos que listam os números, em base 10, um por linha. Por exemplo:
-\begin{lstlisting}
-782
-229
-446
-527
-874
-19
-829
-70
-830
-992
-430
-649
-\end{lstlisting}
-
-Este arquivo de entrada é, por sinal, o que gera o grafo da Figura~\ref{fig:testeprof}.
+Como entrada temos arquivos que listam os números, em base 10, um por linha. Por exemplo, o arquivo da Figura~\ref{fig:testeprof}
 
 Uma seqüência mais complicada, como a seguinte, gera um grafo muito mais complicado, como o da Figura~\ref{fig:testebobo}
 \begin{lstlisting}
