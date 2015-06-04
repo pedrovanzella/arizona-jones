@@ -21,7 +21,6 @@
     "listings"
     "float"
     "bchart"
-    "sbc-template"
     "babel"
     "inputenc")
    (LaTeX-add-labels

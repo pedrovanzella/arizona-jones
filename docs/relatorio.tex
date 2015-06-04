@@ -20,20 +20,18 @@
 {\end{list}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-\usepackage{sbc-template}
+%\usepackage{sbc-template}
 
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 
 \sloppy
 
+\pagenumbering{arabic}
+
 \title{Arizona Jones}
 
-\author{Pedro Vanzella\inst{1}}
-
-\address{Faculdade de Informática -- Pontifícia Universidade Católica do Rio
-Grande do Sul (PUCRS) \\ Av. Ipiranga, 6681 - Porto Alegre / RS / Brasil
-    \email pedro@pedrovanzella.com}
+\author{Pedro Vanzella}
 
 \makeatother
 
@@ -48,18 +46,18 @@ Grande do Sul (PUCRS) \\ Av. Ipiranga, 6681 - Porto Alegre / RS / Brasil
 \begin{document}
 
 \maketitle
-\begin{resumo}
-  Uma solu\c{c}ão para o problema do Arizona Jones no Templo de Tel Dor é proposta. Um grafo é montado com os dados de entrada, e o maior caminho no mesmo representa a solução do problema.
-\end{resumo}
+%\begin{resumo}
+%  Uma solu\c{c}ão para o problema do Arizona Jones no Templo de Tel Dor é proposta. Um grafo é montado com os dados de entrada, e o maior caminho no mesmo representa a solução do problema.
+%\end{resumo}
 
 
 \section{Introdução}\label{sec:intro}
 
-O problema a ser resolvido consiste em encontrar, dentro de um conjunto de números, a maior seqüência crescente de números que, em base 6, têm somente um dígito de diferen\c{c}a entre um e outro. 
+Reza a lenda que Arizona Jones está visitando o Templo de Tel Dor e quer entrar em uma sala secreta. As paredes são cobertas com números, representados em base 10. Alguns destes números formam uma seqüência bem específica: de um número para o próximo, quando representados em base 6, somente um dígito muda\footnote{e nenhum é acrescentado ou removido}. Além disso, a seqüência é crescente. A maior destas seqüências é a chave para acessar a câmara secreta.
 
-Por exemplo, no conjunto $782$ $229$ $446$ $527$ $874$ $19$ $829$ $70$ $830$ $992$ $430$ $649$, a maior seqüência é $649$ $829$ $830$.
+Por exemplo, no conjunto $782$ $229$ $446$ $527$ $874$ $19$ $829$ $70$ $830$ $992$ $430$ $649$, a maior seqüência é $649$ $829$ $830$. Em base 6 é mais fácil vermos porque esta seqüência é válida: $3001_6$, $3501_6$, $3502_6$. O grafo da Figura~\ref{fig:testeprof:grafo} mostra que há somente uma seqüência dentro deste conjunto.
 
-Para isto, os números são organizados em um grafo e o maior caminho é encontrado. Como veremos na se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho}, isto é uma opera\c{c}ão que roda em tempo linear, gra\c{c}as a algumas propriedades interessantes deste grafo.
+Para isto, os números são organizados em um grafo e o maior caminho é encontrado. Como veremos na se\c{c}ão~\ref{sec:algoritmos:achar-maior-caminho}, isto é uma opera\c{c}ão que roda em tempo linear, gra\c{c}as a algumas propriedades interessantes deste grafo. Infelizmente, outras operações não são tão rápidas, como veremos em outras seções.
 
 \section{Estruturas de Dados}\label{sec:estruturas}
 Vamos representar o conjunto de números como um grafo. Isto nos permitirá ligar os nodos que formam seqüências válidas e encontrar a maior seqüência, procurando pelo maior caminho.
