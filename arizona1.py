@@ -145,6 +145,11 @@ class arizona(object):
         for u in self.nodes:
             self.popula_tamanho_paths(u)
 
+        if self.make_graph:
+            for u in self.nodes:
+                n = self.graph.get_node(u)
+                n.attr['label'] = u + "(" + str(self.pesos[u]) + ")"
+
         maior_peso = self.encontra_maior_peso(self.pesos)
         # print "(%r,%r)" % (maior_peso, self.pesos[maior_peso])
         self.longest_path = [(maior_peso, self.nodes[maior_peso])]
@@ -204,4 +209,4 @@ if __name__ == "__main__":
     # print "Populado:"
     # pp.pprint(a.pesos)
     print "Imprimindo grafo"
-    a.graph.write("docs/" + sys.argv[1] + ".dot")
+    a.graph.write("docs/" + sys.argv[1] + ".pesos.dot")

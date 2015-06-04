@@ -242,6 +242,26 @@ calcular_tamanho_caminho(u):
 
 O algoritmo {\sf vizinhos\_que\_chegam()} é explicado na se\c{c}ão~\ref{sec:algoritmos:vizinhos-que-chegam}.
 
+\begin{figure}
+  \noindent %
+  \begin{minipage}{0.45\linewidth}
+    \begin{dot2tex}[neato,options=-tmath,scale=0.65]
+        \input{testeprof.pesos.dot}
+    \end{dot2tex}
+    \caption{Grafo da Figura~\ref{fig:testeprof:entrada} com os pesos dos caminhos}
+    \label{fig:testeprof:grafo:pesos}
+  \end{minipage}
+  \begin{minipage}{0.45\linewidth}
+    \begin{dot2tex}[neato,options=-tmath,scale=0.65]
+        \input{testebobo.pesos.dot}
+    \end{dot2tex}
+    \caption{Grafo da Figura~\ref{fig:testebobo:entrada} com os pesos dos caminhos}
+    \label{fig:testebobo:grafo:pesos}
+  \end{minipage}
+  \caption{Grafos com o peso dos nodos entre parênteses}
+  \label{fig:grafos:pesos}
+\end{figure}
+
 % TODO: explicar melhor isto aqui
 
 \subsection{Vizinhos que Chegam}\label{sec:algoritmos:vizinhos-que-chegam}
