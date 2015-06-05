@@ -130,9 +130,6 @@ class arizona(object):
             if self.pesos[v] > self.pesos[u]:
                 self.pesos[u] = self.pesos[v] + 1
 
-        #if self.make_graph:
-        #    n = self.graph.get_node(u)
-        #    n.attr['label'] = self.pesos[u]
         return self.pesos[u]
 
 
