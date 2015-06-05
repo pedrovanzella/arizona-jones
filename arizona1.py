@@ -26,7 +26,7 @@ class arizona(object):
     def compara(self, u, v):
         """Retorna True se v é maior que u e se entre u e v somente um dígito
         em base 6 é alterado"""
-        if int(v) < int(u):
+        if int(v) <= int(u):
             return False
         bsu = self.nodes[u]
         bsv = self.nodes[v]
@@ -70,8 +70,8 @@ class arizona(object):
     def create_edges(self):
         """A partir dos nodos, cria vértices que respeitem as regras"""
         for u in self.nodes:
-            gen = [v for v in self.nodes if int(v) > int(u)]
-            for v in gen:
+            #gen = [v for v in self.nodes if int(v) > int(u)]
+            for v in self.nodes:
                 if self.compara(u, v):
                     # print "Aresta: %r(%r) -> %r(%r)" %(u, self.nodes[u], v, self.nodes[v])
                     self.edges[u + "," + v] = True
